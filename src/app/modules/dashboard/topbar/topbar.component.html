@@ -54,12 +54,25 @@
 
     <mat-list role="list">
       <mat-list-item role="listitem">
-        <mat-icon>dashboard</mat-icon>Dashboard</mat-list-item>
+          <a [routerLink]="['/dashboard']" routerLinkActive="active">
+            <mat-icon>dashboard</mat-icon>Dashboard
+          </a>
+    </mat-list-item>
+ 
+ <mat-divider></mat-divider>
+
+
       <mat-list-item role="listitem">Item 2</mat-list-item>
+<mat-divider></mat-divider>
+
+
       <mat-list-item role="listitem">Item 3</mat-list-item>
+<mat-divider></mat-divider>
+
+
     </mat-list>
 
   </mat-sidenav>
-
-
+    <!-- loading the content -->
+    <router-outlet></router-outlet>
 </mat-sidenav-container>

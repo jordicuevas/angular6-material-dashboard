@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // We load the material Module
 import { MaterialModule } from './material';
 import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
-
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +18,8 @@ import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    DashboardModule
+    DashboardModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

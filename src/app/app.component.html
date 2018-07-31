@@ -1,57 +1,7 @@
-<mat-toolbar class="zippy-toolbar" color="primary">
-  
-  <mat-toolbar-row>
-    <span><mat-icon>gesture</mat-icon>APP-NAME</span>
-    <button mat-button (click)="right.open()">
-      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-        <path fill="#FFFFFF" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
-      </svg>
-    </button>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon zippy__pointer" (click)="left.open()">add_alert</mat-icon>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>assignment_ind</mat-icon>
-        <span>Modificar perfil</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>forward</mat-icon>
-        <span>Salir</span>
-      </button>
-    </mat-menu>
-  </mat-toolbar-row>
-</mat-toolbar>
+<!-- loading the toolbar -->
+<app-topbar></app-topbar>
 
-<mat-sidenav-container class="zippy--central--content" style="height: 91vh;background: #FFFFFF">
-
-  <mat-sidenav mode="push" #right position="start">
- 
-    <mat-list role="list">
-      <mat-list-item role="listitem"><mat-icon>dashboard</mat-icon>Dashboard</mat-list-item>
-      <mat-list-item role="listitem">Item 2</mat-list-item>
-      <mat-list-item role="listitem">Item 3</mat-list-item>
-    </mat-list>
-
-  </mat-sidenav>
-
-  <mat-sidenav mode="push" #left position="end">
-      <mat-list role="list">
-        <mat-list-item role="listitem">Item 1</mat-list-item>
-        <mat-list-item role="listitem">Item 2</mat-list-item>
-        <mat-list-item role="listitem">Item 3</mat-list-item>
-      </mat-list>
-  </mat-sidenav>
-
-
-</mat-sidenav-container>
+<!-- loading the content -->
 <router-outlet></router-outlet>
-
-<mat-toolbar class="zippy--toolbar--footer" color="primary">
-
-  <mat-toolbar-row>
-    FOOTER
-  </mat-toolbar-row>
-</mat-toolbar>
+<!-- loading the footer -->
+<app-footer></app-footer>

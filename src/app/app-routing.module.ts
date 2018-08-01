@@ -4,15 +4,20 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
 
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard/dashboard.component';
+import { InitComponent } from 'src/app/modules/dashboard/init/init.component';
 
 
 const routes: Routes = [
-
-    {
-      path: 'dashboard', component: DashboardComponent,
-
-    }
-
+  {
+    path: 'init',
+    component: InitComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

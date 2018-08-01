@@ -12,7 +12,7 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <mat-icon>person</mat-icon> &nbsp; <span class="zippy__user__name">Bienvenido <b>Sysadmin</b></span>
+        <mat-icon>person</mat-icon> &nbsp; <span class="zippy__user__name">Bienvenido Sysadmin</span>
       </mat-panel-title>
       
     </mat-expansion-panel-header>
@@ -46,6 +46,28 @@
         <!--here comes routing title -->
          {{ getTitle() }}
       </span>
+      
+        <span class="zippy__spacer"></span>
+        <mat-icon class="zippy_toolbar__icon zippy__pointer" [matMenuTriggerFor]="notificationsMenu">notification_important</mat-icon>
+      <mat-menu #notificationsMenu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>short_text</mat-icon>
+          <span>Notificación 1</span>
+        </button>
+                <mat-divider></mat-divider>
+
+        <button mat-menu-item>
+          <mat-icon>short_text</mat-icon>
+          <span>Notificación 2</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>
+          <mat-icon>short_text</mat-icon>
+          <span>Notificación 3</span>
+        </button>
+      </mat-menu>
+
+          
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="zippy--router-outlet">

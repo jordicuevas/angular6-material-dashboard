@@ -1,8 +1,11 @@
 .zippy--toolbar--footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
   min-width: 100%;
+  transition: 0.3s ease-in-out;
+  overflow:hidden;
+   
 }
 

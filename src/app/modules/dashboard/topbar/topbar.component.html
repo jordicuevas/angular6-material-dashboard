@@ -1,78 +1,37 @@
-<mat-toolbar class="zippy-toolbar" color="primary">
 
-  <mat-toolbar-row>
-    <span>
-      <mat-icon>gesture</mat-icon>APP-NAME</span>
-    <button mat-button (click)="right.open()">
-      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-        <path fill="#FFFFFF" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
-      </svg>
-    </button>
-    <span class="example-spacer"></span>
- <!-- Notifications Button -->   
- <button mat-icon-button [matMenuTriggerFor]="menuNotifications">
-    <mat-icon>add_alert</mat-icon>
-</button>
-<mat-menu #menuNotifications="matMenu">
-  <button mat-menu-item> 
-    <span>Notification 1</span>
-  </button>
-<mat-divider></mat-divider>
-  <button mat-menu-item>
-    <span>Notification 2</span>
-  </button>
-<mat-divider></mat-divider>
-<button mat-menu-item>
-  <span>Notification 3</span>
-</button>
-</mat-menu>
-<!-- Profile Button -->
-<button mat-icon-button [matMenuTriggerFor]="menu">
-  <mat-icon>account_circle</mat-icon>
-</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>assignment_ind</mat-icon>
-    <span>Modificar perfil</span>
-  </button>
-<mat-divider></mat-divider>
+<mat-sidenav-container class="sidenav-container">
 
-  <button mat-menu-item>
-    <mat-icon>forward</mat-icon>
-    <span>Salir</span>
-  </button>
-</mat-menu>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">
+      APP Name
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">
+        <mat-icon matListIcon>folder</mat-icon>Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
 
- 
-    
-  </mat-toolbar-row>
-</mat-toolbar>
-<!-- loading the sidenav -->
-<mat-sidenav-container class="zippy--central--content" style="height: 91vh;background: #FFFFFF">
-
-  <mat-sidenav mode="push" #right position="start">
-
-    <mat-list role="list">
-      <mat-list-item role="listitem">
-          <a [routerLink]="['/dashboard']" routerLinkActive="active">
-            <mat-icon>dashboard</mat-icon>Dashboard
-          </a>
-    </mat-list-item>
- 
- <mat-divider></mat-divider>
-
-
-      <mat-list-item role="listitem">Item 2</mat-list-item>
-<mat-divider></mat-divider>
-
-
-      <mat-list-item role="listitem">Item 3</mat-list-item>
-<mat-divider></mat-divider>
-
-
-    </mat-list>
-
+    </mat-nav-list>
   </mat-sidenav>
-    <!-- loading the content -->
-    <router-outlet></router-outlet>
+  
+  <mat-sidenav-content style="overflow:hidden;">
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>
+        <!--here comes routing title -->
+      </span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div class="zippy--router-outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+
+    
+  
+
 </mat-sidenav-container>

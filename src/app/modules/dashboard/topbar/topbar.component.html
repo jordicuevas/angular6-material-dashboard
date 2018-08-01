@@ -48,8 +48,13 @@
       </span>
       
         <span class="zippy__spacer"></span>
-        <mat-icon class="zippy_toolbar__icon zippy__pointer" [matMenuTriggerFor]="notificationsMenu">notification_important</mat-icon>
+        <mat-icon class="zippy_toolbar__icon zippy__pointer" 
+         matTooltip="Notificaciones" 
+         matTooltipPosition="left" 
+         matTooltipClass = "zippy__tooltip__bg"
+         [matMenuTriggerFor]="notificationsMenu">notification_important</mat-icon>
       <mat-menu #notificationsMenu="matMenu">
+        <mat-card>Notificaciones</mat-card>
         <button mat-menu-item>
           <mat-icon>short_text</mat-icon>
           <span>Notificación 1</span>

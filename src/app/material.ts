@@ -10,6 +10,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgModule } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   imports: [
     MatGridListModule,
@@ -20,7 +22,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule,
+    MatTooltipModule
   ],
   exports: [
     MatGridListModule,
@@ -31,7 +35,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule {}

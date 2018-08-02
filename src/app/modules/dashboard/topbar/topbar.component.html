@@ -1,6 +1,4 @@
-
 <mat-sidenav-container class="sidenav-container">
-
   <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">
@@ -22,17 +20,15 @@
         <mat-divider></mat-divider>
         <mat-list-item role="listitem"><mat-icon>directions_run</mat-icon> &nbsp;Cerrar sesión</mat-list-item>
         <mat-divider></mat-divider>
-       
-      </mat-list>
+</mat-list>
 
      <!-- Content Goes Here -->
   </mat-expansion-panel>
   </mat-accordion>
 
-      <a [routerLink]="['/dashboard']" mat-list-item href="#">
+      <a [routerLink]="['dashboard']" mat-list-item href="#">
         <mat-icon matListIcon>dashboard</mat-icon>Dashboard</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+       
 
     </mat-nav-list>
   </mat-sidenav>
@@ -48,40 +44,36 @@
       </span>
       
         <span class="zippy__spacer"></span>
-        <mat-icon class="zippy_toolbar__icon zippy__pointer" 
-         matTooltip="Notificaciones" 
-         matTooltipPosition="left" 
-         matTooltipClass = "zippy__tooltip__bg"
-         [matMenuTriggerFor]="notificationsMenu">notification_important</mat-icon>
-      <mat-menu #notificationsMenu="matMenu">
+          <mat-icon class="zippy_toolbar__icon zippy__pointer" 
+               matTooltip="Notificaciones" 
+               matTooltipPosition="left" 
+               matTooltipClass = "zippy__tooltip__bg"
+               [matMenuTriggerFor]="notificationsMenu">
+               notification_important
+          </mat-icon>
+
+        <mat-menu #notificationsMenu="matMenu">
         <mat-card>Notificaciones</mat-card>
-        <button mat-menu-item>
-          <mat-icon>short_text</mat-icon>
-          <span>Notificación 1</span>
-        </button>
-                <mat-divider></mat-divider>
-
-        <button mat-menu-item>
-          <mat-icon>short_text</mat-icon>
-          <span>Notificación 2</span>
-        </button>
+          <button mat-menu-item>
+            <mat-icon>short_text</mat-icon>
+            <span>Notificación 1</span>
+          </button>
         <mat-divider></mat-divider>
-        <button mat-menu-item>
-          <mat-icon>short_text</mat-icon>
-          <span>Notificación 3</span>
-        </button>
-      </mat-menu>
 
-          
+          <button mat-menu-item>
+            <mat-icon>short_text</mat-icon>
+            <span>Notificación 2</span>
+          </button>
+        <mat-divider></mat-divider>
+          <button mat-menu-item>
+            <mat-icon>short_text</mat-icon>
+            <span>Notificación 3</span>
+          </button>
+        </mat-menu>  
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="zippy--router-outlet">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
-
-
-    
-  
-
 </mat-sidenav-container>

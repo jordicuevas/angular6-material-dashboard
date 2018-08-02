@@ -8,9 +8,17 @@ body {
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  position: relative;
+  height: auto;
+  min-height: 100% !important;
+
 }
 
 .zippy__tooltip__bg{
   background: rgb(255, 187, 0);
   color:#000000 !important;
+}
+
+body {
+  
 }

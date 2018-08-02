@@ -2,12 +2,12 @@ import { NgModule, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopbarComponent } from './topbar/topbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { MaterialModule } from '../../material';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { RouterModule } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { InitComponent } from './init/init.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { MaterialModule } from '../../material';
+import { RouterModule } from '@angular/router';
+
  @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +17,8 @@ import { InitComponent } from './init/init.component';
   exports: [
     TopbarComponent,
     FooterComponent,
-    DashboardComponent
+    DashboardComponent,
+    InitComponent
   ],
   declarations: [TopbarComponent, FooterComponent, DashboardComponent, InitComponent]
 })

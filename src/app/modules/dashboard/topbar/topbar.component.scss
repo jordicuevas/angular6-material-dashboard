@@ -18,26 +18,37 @@
   margin-top:25px;
   margin-bottom:20px;
   margin-left:10px;
-  margin-right:10px !important;
+  margin-right:20px !important;
   height:100%;
-  min-height:100%
+  min-height:100%;
+  display: block;
+  overflow: auto;
+
 
 }
 
 
 .sidenav-container {
   height: 100%;
+  margin-top:60px; 
+  margin-right:10px;
 }
 
 .sidenav {
   width: 250px;
-      box-shadow: 0px 0px 20px black;
+  box-shadow: 0px 0px 20px black;
+  position:fixed;
+  min-height: 100%;
+  padding-top:60px;
 
 }
 
 .mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
+ position: fixed;
+ top: 0;
+ z-index: 9;
+ box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
+
 }
 
 

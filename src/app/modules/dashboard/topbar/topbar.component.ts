@@ -26,7 +26,7 @@ export const ROUTES: RouteInfo[] = [
 
 @Component({
   selector: 'app-topbar',
-  templateUrl: './topbar.component.html',
+  templateUrl: 'topbar.component.html',
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
@@ -34,9 +34,12 @@ export class TopbarComponent implements OnInit {
     .observe(Breakpoints.Handset)
     .pipe(map(result => result.matches));
   private listTitles: any[];
-  constructor(private breakpointObserver: BreakpointObserver, public router: Router, public location: Location
-  ) {
-          this.location = location;
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    public router: Router,
+    public location: Location) {
+    this.location = location;
   }
 
   ngOnInit() {

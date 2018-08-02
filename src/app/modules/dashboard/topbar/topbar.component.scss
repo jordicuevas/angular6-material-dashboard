@@ -1,5 +1,7 @@
+
 .zippy__toolbar__icon {
-  padding: 0 14px;
+  padding: 0 50px !important;
+
 }
 .zippy__spacer {
   flex: 1 1 auto;
@@ -39,19 +41,33 @@
   box-shadow: 0px 0px 20px black;
   position:fixed;
   min-height: 100%;
-  padding-top:60px;
-
+  padding-top:55px;
 }
+
 
 .mat-toolbar.mat-primary {
  position: fixed;
  top: 0;
  z-index: 9;
- box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
-
+ box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.24);
+ border-bottom:1px solid rgb(59, 57, 57);
 }
 
+.user__profile {
+   font-family: 'Roboto',
+   sans-serif;
+   font-size:12px !important;
 
+}
+.list .mat-list {
+  padding-top: 0;
+  /* .mat-list also has an additional padding top  */
+}
+
+.list .mat-list .mat-list-item {
+  height: auto !important;
+  /* To avoid calculated height from mat-line-x classes */
+}
 
 .zippy__pointer {
   cursor: pointer;
@@ -59,4 +75,8 @@
 
 .zippy__user__name{
   padding-top:3px;
+  font-family: 'Roboto',
+  sans-serif;
+  font-size:12px !important;
+
 }

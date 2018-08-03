@@ -25,6 +25,7 @@ export const ROUTES: RouteInfo[] = [
 ];
 
 @Component({
+   
   selector: 'app-topbar',
   templateUrl: 'topbar.component.html',
   styleUrls: ['./topbar.component.scss']

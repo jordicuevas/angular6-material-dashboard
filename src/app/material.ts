@@ -37,10 +37,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkTreeModule } from '@angular/cdk/tree';
 
 @NgModule({
   imports: [
+    CdkTableModule,
+    CdkTreeModule,
     MatGridListModule,
     MatMenuModule,
     MatListModule,
@@ -75,6 +78,8 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule
   ],
   exports: [
+    CdkTableModule,
+    CdkTreeModule,
     MatGridListModule,
     MatMenuModule,
     MatListModule,

@@ -13,13 +13,15 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <mat-icon class="material-icons md-18">person</mat-icon> &nbsp; <span class="zippy__user__name">Bienvenido Sysadmin</span>
+      <div mat-card-avatar class="example-header-image"></div>&nbsp;
+<span class="zippy__user__name">Bienvenido Sysadmin</span>
+
       </mat-panel-title>
       
     </mat-expansion-panel-header>
       <mat-list role="list" >
         <mat-divider></mat-divider>
-        <mat-list-item role="listitem"><mat-icon class="material-icons md-18">assignment_ind</mat-icon> &nbsp;<span class="user__profile">Perfil de Usuario</span></mat-list-item>
+        <mat-list-item role="listitem"><mat-icon class="material-icons md-18">assignment_ind</mat-icon> &nbsp;<span class="user__profile">Perfil</span></mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item role="listitem"><mat-icon class="material-icons md-18">directions_run</mat-icon> &nbsp;<span class="user__profile">Cerrar sesión</span></mat-list-item>
         <mat-divider></mat-divider>
@@ -28,10 +30,23 @@
      <!-- Content Goes Here -->
   </mat-expansion-panel>
   </mat-accordion>
-
+<mat-list>
+  <mat-list-item>
       <a [routerLink]="['dashboard']" mat-list-item href="#">
-        <mat-icon   class="material-icons md-18">dashboard</mat-icon><span class="nav__element__size">Dashboard</span></a>
-       
+        <mat-icon class="material-icons md-18">dashboard</mat-icon>
+        <span class="nav__element__size">Dashboard</span>
+      </a>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>
+      <a [routerLink]="['users']" mat-list-item href="#">
+        <mat-icon class="material-icons md-18">face</mat-icon>
+        <span class="nav__element__size">Usuarios</span>
+      </a>
+  </mat-list-item>
+</mat-list>
+     
+   
 
     </mat-nav-list>
   </mat-sidenav>
@@ -47,13 +62,20 @@
       </span>
       
         <span class="zippy__spacer"></span>
-          <mat-icon class="zippy_toolbar__icon zippy__pointer" 
-               matTooltip="Notificaciones" 
+          <mat-icon class="zippy_toolbar__icon zippy__pointer material-icons md-18 " 
+               matTooltip="Notificaciones"
+               matBadge = "25" 
+               matBadgeSize="medium"
+               matBadgePosition="before"
+               matBadgeColor="warn"
                matTooltipPosition="left" 
                matTooltipClass = "zippy__tooltip__bg"
                [matMenuTriggerFor]="notificationsMenu">
                notification_important
-          </mat-icon>
+</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+
+
 
         <mat-menu #notificationsMenu="matMenu">
         <mat-card>Notificaciones</mat-card>

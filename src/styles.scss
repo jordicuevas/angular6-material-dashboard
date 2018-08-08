@@ -112,3 +112,15 @@ body {
   border-bottom-left-radius: 3px;
   padding: 10px;
 }
+
+.box-header-icon{
+  float:left;
+  width:20px;
+}
+
+.box-header > .fa, .box-header > .glyphicon, .box-header > .ion, .box-header .box-title {
+  display: inline-block;
+  font-size: 18px;
+  margin: 0;
+  line-height: 1;
+}

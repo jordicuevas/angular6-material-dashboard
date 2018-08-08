@@ -13,7 +13,7 @@ import {
   PathLocationStrategy
 } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 declare interface RouteInfo {
     path: string;
     title: string;
@@ -25,7 +25,6 @@ export const ROUTES: RouteInfo[] = [
 ];
 
 @Component({
-   
   selector: 'app-topbar',
   templateUrl: 'topbar.component.html',
   styleUrls: ['./topbar.component.scss']
@@ -39,12 +38,16 @@ export class TopbarComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     public router: Router,
-    public location: Location) {
+    public location: Location,
+    private toastr: ToastrService) {
     this.location = location;
   }
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.toastr.success('Hello world!', 'Toastr fun!',{
+      'progressBar': true
+    });
   }
   getTitle() {
     let titlee = this.location.prepareExternalUrl(this.location.path());

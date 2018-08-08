@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
     BrowserAnimationsModule,
     MaterialModule,
     DashboardModule,
-    RouterModule
+    RouterModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

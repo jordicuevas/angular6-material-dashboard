@@ -1,4 +1,7 @@
 #DASHBOARD ANGULAR 6 MATERIAL DESIGN
+##Added v0.0.3
+- Added fontawesome icons 
+
  ##Added v0.0.2
 - Added full height NavBar
 - Footer auto adjust to content

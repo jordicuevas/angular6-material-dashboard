@@ -1,4 +1,8 @@
 #DASHBOARD ANGULAR 6 MATERIAL DESIGN
+##Added v0.0.5
+- Added sticky footer
+- Added httpUtils module service
+
 ##Added v0.0.4
 - Added green material design theme
 

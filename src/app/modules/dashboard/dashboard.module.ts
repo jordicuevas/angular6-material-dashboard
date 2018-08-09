@@ -7,12 +7,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { MaterialModule } from '../../material';
 import { RouterModule } from '@angular/router';
+import { HttpUtilsModule} from '../http-utils/http-utils.module';
 
- @NgModule({
+@NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    HttpUtilsModule
   ],
   exports: [
     TopbarComponent,

@@ -47,9 +47,7 @@ export class TopbarComponent implements OnInit {
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
-    this.toastr.success('Hello world!', 'Toastr fun!',{
-      'progressBar': true
-    });
+    // this.toastr.success('Hello world!', 'Toastr fun!',{'progressBar': true});
   }
   getTitle() {
     let titlee = this.location.prepareExternalUrl(this.location.path());

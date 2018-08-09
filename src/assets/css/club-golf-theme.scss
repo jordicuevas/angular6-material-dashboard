@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$club-golf-primary: mat-palette($mat-teal);
+$club-golf-accent:  mat-palette($mat-green, A200, A100, A400);
+
+$club-golf-panama: mat-light-theme($club-golf-primary,$club-golf-accent);
+
+@include angular-material-theme($club-golf-panama);

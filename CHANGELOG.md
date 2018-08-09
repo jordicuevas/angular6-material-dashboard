@@ -1,4 +1,7 @@
 #DASHBOARD ANGULAR 6 MATERIAL DESIGN
+##Added v0.0.4
+- Added green material design theme
+
 ##Added v0.0.3
 - Added fontawesome icons support
 

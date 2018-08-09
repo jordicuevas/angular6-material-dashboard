@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/*@import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import '~animate.css/animate.min.css';
 // regular style toast
@@ -17,6 +17,7 @@ body {
     font-family: 'Roboto',
     sans-serif;
 
+
 }
 
 body {
@@ -25,7 +26,7 @@ body {
   position: relative;
   height: auto;
   min-height: 100% !important;
-    box-sizing: border-box;
+  box-sizing: border-box;
 
 
 }
@@ -35,9 +36,6 @@ body {
   color:#000000 !important;
 }
 
-body {
-  
-}
 
  /* Rules for sizing the icon. */
 .material-icons.md-12 {

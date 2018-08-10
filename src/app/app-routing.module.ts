@@ -6,6 +6,8 @@ import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard/dashboard.component';
 import { InitComponent } from 'src/app/modules/dashboard/init/init.component';
 
+import { ClientsModel } from './models/clients/clients.model';
+import {TableComponent} from './modules/utils/table/table/table.component';
 
 const routes: Routes = [
   {
@@ -15,6 +17,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'clients',
+        component: TableComponent ,  data: {'model': ClientsModel}
       }
     ]
   } 

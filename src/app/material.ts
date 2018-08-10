@@ -39,10 +39,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
   imports: [
     CdkTableModule,
+    MatBottomSheetModule,
     CdkTreeModule,
     MatGridListModule,
     MatMenuModule,
@@ -78,6 +80,7 @@ import { CdkTreeModule } from '@angular/cdk/tree';
     MatTableModule
   ],
   exports: [
+    MatBottomSheetModule,
     CdkTableModule,
     CdkTreeModule,
     MatGridListModule,

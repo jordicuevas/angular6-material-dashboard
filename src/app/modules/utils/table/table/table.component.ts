@@ -2,6 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { FormComponent } from '../../form/form/form.component';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+import { MatPaginatorIntl} from '@angular/material';
+
+import * as $ from 'jquery';
 
 export interface PeriodicElement {
   name: string;
@@ -54,7 +59,7 @@ export const UserData = [
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent extends MatPaginatorIntl implements OnInit {
   array = Object.keys(UserData[0]);
   displayedColumns: string[] = this.array;
   columnsToDisplay: string[] = this.displayedColumns.slice();
@@ -65,7 +70,8 @@ export class TableComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private bottomSheet: MatBottomSheet) {
+    super();
     let data: any = this.route.snapshot.data;
     this.values = new data.model();
     this.keys = [];
@@ -83,9 +89,17 @@ export class TableComponent implements OnInit {
   ngOnInit() {
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
+   $.material.init();
+
   }
 
-
+  openBottomSheet(): void {
+    this.bottomSheet.open(FormComponent, {
+      data: {
+        values: this.values.data
+      }
+    });
+  }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -94,6 +108,8 @@ export class TableComponent implements OnInit {
     }
   }
 }
+
+
 
 /** Builds and returns a new User. */
 function createNewUser(id: number): UserData {

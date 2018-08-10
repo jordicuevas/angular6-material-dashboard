@@ -1,115 +1,106 @@
-<div class="col-xs-6 col-sm-12 contenedor-formulario">
-  
-  <div class="row">
-      <div class="col-xs-12 col-sm-12 text-center">
-            <img class="size-image" src="../../../../assets/images/conexion.png" alt="">
-      </div>
-  </div>
-  <form class="formulario example-form">
-      <div class="title-module">{{data.values['name'].title}}</div>
+<div class="col-xs-6 col-md-12 col-lg-12 col-sm-12 contenedor-formulario">
+
+  <!-- general form elements -->
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <mat-icon class="box-header-icon">face</mat-icon>&nbsp;<h3 class="box-title">{{data.values['name'].title}}</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form class="formulario example-form">
+      <div class="title-module"></div>
       <div class="wrap" *ngFor="let key of keys">
-          <div class="form-group color-input">
-              <mat-form-field *ngIf="data.values[key].type=='text'" id="{{data.values[key].id}}" class="{{data.values[key].class}}">
-                  <input  matInput value="" placeholder="{{data.values[key].title}}" #message>
-             </mat-form-field>
+        <div class="form-group color-input">
+          <mat-form-field *ngIf="data.values[key].type=='text'" id="{{data.values[key].id}}" class="{{data.values[key].class}}">
+            <input  matInput value="" placeholder="{{data.values[key].title}}" #message>
+          </mat-form-field>
 
-            <mat-form-field style="width: 302px;" class="example-full-width" id="{{ data.values[key].id }}"  class="{{data.values[key].class}}" *ngIf="data.values[key].type=='textarea'">
-                  <textarea  matInput placeholder="{{data.values[key].title}}"></textarea>
-             </mat-form-field>
-          </div>
+          <mat-form-field style="width: 302px;" class="example-full-width" id="{{data.values[key].id}}"  class="{{data.values[key].class}}" *ngIf="data.values[key].type=='textarea'">
+            <textarea  matInput placeholder="{{data.values[key].title}}"></textarea>
+          </mat-form-field>
+        </div>
 
-          <div class="form-group color-input">
-            <mat-form-field style="width: 302px;" *ngIf="data.values[key].type=='select'" id="{{ data.values[key].id }}"  class="{{data.values[key].class}}">
-                    <mat-select placeholder="{{data.values[key].placeholder}}">
-                        <mat-option *ngFor="let state of data.values[key].source" (click)="verNotificacion(state);" [value]="state">{{state}}</mat-option>
-                    </mat-select>
-            </mat-form-field>
-          </div>
+        <div class="form-group color-input">
+          <mat-form-field style="width: 302px;" *ngIf="data.values[key].type=='select'" id="{{data.values[key].id}}"  class="{{data.values[key].class}}">
+            <mat-select placeholder="{{data.values[key].placeholder}}">
+              <mat-option *ngFor="let state of data.values[key].source" (click)="verNotificacion(state);" [value]="state">{{state}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-<!--
-          <div class="form-group">
-
-            <mat-form-field>
-                  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-
-
-              <mat-form-field>
-                  <input matInput type="number" placeholder="Font size (px)" formControlName="fontSize" min="10" #number>
-              </mat-form-field>
-          </div>
-
-
-
-
-          <div class="form-group">
-              <div class="input-group radio">
-                  <input type="radio" name="sexo" id="hombre" value="Hombre">
-                  <label for="hombre">Opcion1</label>
-                  <input type="radio" name="sexo" id="mujer" value="Mujer">
-                  <label for="mujer">Opcion2</label>
-              </div>
-
-              <mat-form-field>
-                  <mat-select placeholder="State">
-                      <mat-option>None</mat-option>
-                      <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
-                  </mat-select>
-              </mat-form-field>
-
-          </div>
-
-          <div class="form-group">
-              <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
-                  <mat-hint>Errors appear instantly!</mat-hint>
-                  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                      Please enter a valid email address
-                  </mat-error>
-                  <mat-error *ngIf="emailFormControl.hasError('required')">
-                      Email is <strong>required</strong>
-                  </mat-error>
-              </mat-form-field>
-          </div>
-
-          <div class="form-group">
-              <div class="input-group checkbox">
-                  <input type="checkbox" name="terminos" id="terminos" value="true">
-                  <label for="terminos">Aceptar teminos y condiciones</label>
-              </div>
-          </div>
-
-          <div class="form-group">
-              <mat-slide-toggle>Enviar Correo</mat-slide-toggle>
-          </div>
-
-          <div class="form-group">
-              <mat-accordion>
-                  <mat-expansion-panel>
-                      <mat-expansion-panel-header>
-                          <mat-panel-title>
-                              Más opciones
-                          </mat-panel-title>
-                          <mat-panel-description>
-                              personalizar email
-                          </mat-panel-description>
-                      </mat-expansion-panel-header>
-
+        <!--
+                    <div class="form-group">
                       <mat-form-field>
-                          <input matInput placeholder="Mensaje">
-                      </mat-form-field>
-
-                      <mat-form-field>
-                          <input matInput placeholder="Asunto">
-                      </mat-form-field>
-                  </mat-expansion-panel>
-              </mat-accordion>
-          </div>
--->
+                            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="number" placeholder="Font size (px)" formControlName="fontSize" min="10" #number>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group radio">
+                            <input type="radio" name="sexo" id="hombre" value="Hombre">
+                            <label for="hombre">Opcion1</label>
+                            <input type="radio" name="sexo" id="mujer" value="Mujer">
+                            <label for="mujer">Opcion2</label>
+                        </div>
+                        <mat-form-field>
+                            <mat-select placeholder="State">
+                                <mat-option>None</mat-option>
+                                <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+                            <mat-hint>Errors appear instantly!</mat-hint>
+                            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                Email is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group checkbox">
+                            <input type="checkbox" name="terminos" id="terminos" value="true">
+                            <label for="terminos">Aceptar teminos y condiciones</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <mat-slide-toggle>Enviar Correo</mat-slide-toggle>
+                    </div>
+                    <div class="form-group">
+                        <mat-accordion>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Más opciones
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        personalizar email
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <mat-form-field>
+                                    <input matInput placeholder="Mensaje">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Asunto">
+                                </mat-form-field>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </div>
+      -->
       </div>
+      <!-- /.box-body -->
 
-  </form>
-
+      <div class="box-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+</div>
 </div>

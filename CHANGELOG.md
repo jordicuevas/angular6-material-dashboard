@@ -1,4 +1,7 @@
 #DASHBOARD ANGULAR 6 MATERIAL DESIGN
+##Added v0.0.6
+- Added doUpdate, doDelete to httpUtils module service
+
 ##Added v0.0.5
 - Added sticky footer
 - Added httpUtils module service

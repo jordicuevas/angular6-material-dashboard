@@ -9,11 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
 import { HttpUtilsModule } from 'src/app/modules/http-utils/http-utils.module';
+import { FormModule } from './modules/utils/form/form.module';
+import { TableModule } from './modules/utils/table/table.module';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpModule } from '@angular/http';
+import { FormComponent } from './modules/utils/form/form/form.component';
 
-
- @NgModule({
+@NgModule({
   declarations: [
     AppComponent
   ],
@@ -25,12 +27,14 @@ import { HttpModule } from '@angular/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    TableModule,
+    FormModule,
     DashboardModule,
     RouterModule,
     ToastrModule.forRoot()
    ],
   providers: [ HttpUtilsModule],
   bootstrap: [AppComponent],
-   entryComponents: []
+  entryComponents: [FormComponent],
 })
 export class AppModule { }

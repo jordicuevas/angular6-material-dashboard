@@ -1,9 +1,20 @@
+export interface UserData {
+  Notificaciones: string;
+  name: string;
+  progress: string;
+  color: string;
+}
+
 export class ClientsModel {
+  public catalogTitle: string;
+  public catalogIcon: string;
 
   public data: object = {};
 
 
   constructor() {
+    this.catalogIcon = 'group';
+    this.catalogTitle = 'Catálogo de Clientes';
     this.initData();
   }
   public initData() {

@@ -8,6 +8,7 @@ import { InitComponent } from 'src/app/modules/dashboard/init/init.component';
 
 import { ClientsModel } from './models/clients/clients.model';
 import {TableComponent} from './modules/utils/table/table/table.component';
+import { VehiclesModel } from './models/vehicles/vehicles.model';
 
 const routes: Routes = [
   {
@@ -21,9 +22,14 @@ const routes: Routes = [
       {
         path: 'clients',
         component: TableComponent ,  data: {'model': ClientsModel}
+      },
+      {
+        path: 'vehicles',
+        component: TableComponent ,  data: {'model': VehiclesModel}
+
       }
     ]
-  } 
+  }
 ];
 
 @NgModule({

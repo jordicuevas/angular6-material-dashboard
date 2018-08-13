@@ -1,5 +1,30 @@
+<div class="container">
+
+  <div class="row">
+    <mat-toolbar class="title-table" color="accent">
+
+    <mat-toolbar-row>
+      <mat-icon class="icon-table">{{ catalogIcon }}</mat-icon>
+      <div class="col-md-8">
+
+       {{ catalogTitle }}
+
+    </div>
+    <span class="table-spacer"></span>
+    <div class="col-md-4">
 
 
+        <mat-form-field >
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+        </mat-form-field>
+
+    </div>
+    </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+
+</div>
    <!-- <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
@@ -39,18 +64,7 @@
     [pageSizeOptions]="[25, 50, 100, 250]">
   </mat-paginator> -->
 
-   <div class="container">
-     <div class="row">
-       <div class="col-md-3 ">
-         <div class="pull-right">
-           <mat-form-field >
-             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
-           </mat-form-field>
-         </div>
 
-       </div>
-     </div>
-   </div>
   <div class="container">
   <!-- New table with paginator, search input, sort and colors by rows-->
 

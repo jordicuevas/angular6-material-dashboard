@@ -9,6 +9,7 @@ import { InitComponent } from 'src/app/modules/dashboard/init/init.component';
 import { ClientsModel } from './models/clients/clients.model';
 import {TableComponent} from './modules/utils/table/table/table.component';
 import { VehiclesModel } from './models/vehicles/vehicles.model';
+import {TeetimeComponent} from './modules/utils/teetime/teetime/teetime.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,10 @@ const routes: Routes = [
       {
         path: 'vehicles',
         component: TableComponent ,  data: {'model': VehiclesModel}
-
+      },
+      {
+        path: 'reservation',
+        component: TeetimeComponent
       }
     ]
   }

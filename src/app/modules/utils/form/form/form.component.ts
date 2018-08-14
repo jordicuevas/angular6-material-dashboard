@@ -15,6 +15,7 @@ export class FormComponent implements OnInit {
     Object.keys(this.data.values).forEach(key => {
       this.keys.push(key);
     });
+    console.log(this.keys);
   }
   ngOnInit() {
   }

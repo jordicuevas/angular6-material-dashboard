@@ -31,24 +31,30 @@
   </mat-expansion-panel>
   </mat-accordion>
 <mat-list>
-  <mat-list-item>
-      <a [routerLink]="['dashboard']" mat-list-item href="#">
+
+  <a [routerLink]="['dashboard']" mat-list-item href="#">
+     <mat-list-item>
         <mat-icon class="material-icons md-18">dashboard</mat-icon>
         <span class="nav__element__size"   >Dashboard</span>
-      </a>
-  </mat-list-item>
+      </mat-list-item>
+  </a>
+  <a [routerLink]="['clients']" mat-list-item href="#">
+     <mat-list-item>
+        <mat-icon class="material-icons md-18">dashboard</mat-icon>
+        <span class="nav__element__size"   >Clientes</span>
+     </mat-list-item>
+  </a>
+  <a [routerLink]="['vehicles']" mat-list-item href="#">
+     <mat-list-item>
+        <mat-icon class="material-icons md-18">dashboard</mat-icon>
+        <span class="nav__element__size"   >Vehiculos</span>
+     </mat-list-item>
+  </a><a [routerLink]="['reservation']" mat-list-item href="#">
   <mat-list-item>
-    <a [routerLink]="['clients']" mat-list-item href="#">
-      <mat-icon class="material-icons md-18">dashboard</mat-icon>
-      <span class="nav__element__size"   >Clientes</span>
-    </a>
+    <mat-icon class="material-icons md-18">dashboard</mat-icon>
+    <span class="nav__element__size"   >Reservar</span>
   </mat-list-item>
-  <mat-list-item>
-    <a [routerLink]="['vehicles']" mat-list-item href="#">
-      <mat-icon class="material-icons md-18">dashboard</mat-icon>
-      <span class="nav__element__size"   >Vehiculos</span>
-    </a>
-  </mat-list-item>
+</a>
   <mat-divider></mat-divider>
 
 </mat-list>
@@ -69,20 +75,20 @@
       </span>
       
         <span class="zippy__spacer"></span>
+        <div style="padding-right:180px;">
           <mat-icon class="zippy_toolbar__icon zippy__pointer material-icons md-18 "
-               matTooltip="Notificaciones"
-               matBadge = "25" 
-               matBadgeSize="medium"
-               matBadgePosition="before"
-               matBadgeColor="warn"
-               matTooltipPosition="left" 
-               matTooltipClass = "zippy__tooltip__bg"
-               [matMenuTriggerFor]="notificationsMenu">
-               notification_important
-</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- 
-
-
+                    matTooltip="Notificaciones"
+                    matBadge = "25"
+                    matBadgeSize="medium"
+                    matBadgePosition="before"
+                    matBadgeColor="warn"
+                    matTooltipPosition="left"
+                    matTooltipClass = "zippy__tooltip__bg"
+                    [matMenuTriggerFor]="notificationsMenu">
+            notification_important
+          </mat-icon>&nbsp;&nbsp;
+        </div>
+           &nbsp;&nbsp;&nbsp;&nbsp;
 
         <mat-menu #notificationsMenu="matMenu">
         <mat-card>Notificaciones</mat-card>

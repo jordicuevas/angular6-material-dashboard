@@ -17,6 +17,12 @@ export class VehiclesModel {
     this.initData();
   }
   public initData() {
+    // object for displaying title and icon
+    this.data['catalogName'] = {
+      'title': this.catalogTitle,
+      'icon': this.catalogIcon,
+      'key': 'catalogName',
+    };
     this.data['codigo'] = {
       'type': 'text',
       'title': 'Código',

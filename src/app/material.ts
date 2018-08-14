@@ -40,10 +40,11 @@ import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 @NgModule({
   imports: [
     CdkTableModule,
+    MatMomentDateModule,
     MatBottomSheetModule,
     CdkTreeModule,
     MatGridListModule,
@@ -81,6 +82,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
   ],
   exports: [
     MatBottomSheetModule,
+    MatMomentDateModule,
     CdkTableModule,
     CdkTreeModule,
     MatGridListModule,

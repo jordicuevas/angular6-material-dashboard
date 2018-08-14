@@ -11,14 +11,31 @@ import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
 import { HttpUtilsModule } from 'src/app/modules/http-utils/http-utils.module';
 import { FormModule } from './modules/utils/form/form.module';
 import { TableModule } from './modules/utils/table/table.module';
+import { TeetimeModule } from './modules/utils/teetime/teetime.module';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpModule } from '@angular/http';
 import { FormComponent } from './modules/utils/form/form/form.component';
+import { InputComponent } from './utils/component/input/input.component';
+import { ButtonComponent } from './utils/component/button/button.component';
+import { SelectComponent } from './utils/component/select/select.component';
+import { DateComponent } from './utils/component/date/date.component';
+import { RadiobuttonComponent } from './utils/component/radiobutton/radiobutton.component';
+import { CheckboxComponent } from './utils/component/checkbox/checkbox.component';
+import { DynamicFieldDirective } from './utils/component/dynamic-field.directive';
+import { DynamicFormComponent } from './utils/component/dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent,
+    InputComponent,
+    ButtonComponent,
+    SelectComponent,
+    DateComponent,
+    RadiobuttonComponent,
+    CheckboxComponent,
+    DynamicFieldDirective,
+    DynamicFormComponent,
+   ],
   imports: [
     BrowserModule,
     HttpUtilsModule,
@@ -31,10 +48,21 @@ import { FormComponent } from './modules/utils/form/form/form.component';
     FormModule,
     DashboardModule,
     RouterModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ReactiveFormsModule,
+    FormsModule,
+    TeetimeModule,
+
    ],
   providers: [ HttpUtilsModule],
   bootstrap: [AppComponent],
-  entryComponents: [FormComponent],
+  entryComponents: [
+    FormComponent,
+    InputComponent,
+    ButtonComponent,
+    SelectComponent,
+    DateComponent,
+    RadiobuttonComponent,
+    CheckboxComponent],
 })
 export class AppModule { }

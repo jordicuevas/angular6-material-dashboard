@@ -19,10 +19,11 @@ export class ClientsModel {
   }
   public initData() {
 
-
-    this.data['name'] = {
-      'title': 'Notificaciones',
-      'key': 'name',
+  // object for displaying title and icon
+    this.data['catalogName'] = {
+      'title': this.catalogTitle,
+      'icon':  this.catalogIcon,
+      'key': 'catalogName',
     };
 
 

@@ -41,11 +41,14 @@ export class TableComponent implements OnInit {
     this.values = new data.model();
     this.catalogTitle = this.values.catalogTitle;
     this.catalogIcon = this.values.catalogIcon;
-    console.log(this.values)
     // get the object keys of data model
     this.keys = [];
     Object.keys(this.values.data).forEach(key => {
-      this.keys.push(this.values.data[key].title);
+       if (this.values.data[key].key === 'catalogName') {
+         return;
+       } else {
+         this.keys.push(this.values.data[key].title);
+       }
     });
     // we passed the keys to table header
     this.displayedColumns = this.keys;

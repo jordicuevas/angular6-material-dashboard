@@ -13,6 +13,6 @@ export class ConfigService {
 
   constructor() {
     this.token = localStorage.getItem('Bearer');
-    this.apiaddr = 'http://qalina.zippyttech.com:8000';
+    this.apiaddr = 'http://10.0.1.199:8600';
   }
 }

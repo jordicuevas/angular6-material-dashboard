@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ import { RadiobuttonComponent } from './utils/component/radiobutton/radiobutton.
 import { CheckboxComponent } from './utils/component/checkbox/checkbox.component';
 import { DynamicFieldDirective } from './utils/component/dynamic-field.directive';
 import { DynamicFormComponent } from './utils/component/dynamic-form/dynamic-form.component';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DynamicFormComponent } from './utils/component/dynamic-form/dynamic-for
     CheckboxComponent,
     DynamicFieldDirective,
     DynamicFormComponent,
+    TestComponent,
    ],
   imports: [
     BrowserModule,
@@ -54,6 +56,9 @@ import { DynamicFormComponent } from './utils/component/dynamic-form/dynamic-for
     TeetimeModule,
 
    ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   providers: [ HttpUtilsModule],
   bootstrap: [AppComponent],
   entryComponents: [

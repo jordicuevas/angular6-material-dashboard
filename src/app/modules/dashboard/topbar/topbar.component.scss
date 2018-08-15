@@ -13,10 +13,13 @@
 
 
 } 
-.example-header-image {
+.user-avatar {
   background-image: url('https://www.w3schools.com/bootstrap4/img_avatar3.png');
-
   background-size: cover;
+  width:60px;
+  height: 40px;
+  border-radius : 25px;
+  margin-top: 3px;
 }
 
 .zippy--router-outlet{
@@ -92,4 +95,16 @@
 .mat-list .mat-list-item {
   height: 30px !important;
   /* default is 72px */
+}
+
+.left-navbar{
+  position: fixed;
+  z-index: 99999999;
+  min-height: 100%;
+  padding: 10px;
+ }
+
+.panel-close{
+  padding-top:10px;
+  padding-left:10px;
 }

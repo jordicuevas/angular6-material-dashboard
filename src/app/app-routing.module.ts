@@ -7,9 +7,10 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard/dashboar
 import { InitComponent } from 'src/app/modules/dashboard/init/init.component';
 
 import { ClientsModel } from './models/clients/clients.model';
-import {TableComponent} from './modules/utils/table/table/table.component';
+import { TableComponent } from './modules/utils/table/table/table.component';
 import { VehiclesModel } from './models/vehicles/vehicles.model';
-import {TeetimeComponent} from './modules/utils/teetime/teetime/teetime.component';
+import { TeetimeComponent } from './modules/utils/teetime/teetime/teetime.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'reservation',
         component: TeetimeComponent
+      },
+      {
+        path: 'forms',
+        component: TestComponent
       }
     ]
   }

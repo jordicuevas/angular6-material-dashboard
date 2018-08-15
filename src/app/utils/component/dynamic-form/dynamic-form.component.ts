@@ -3,12 +3,13 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { FieldConfig, Validator } from 'src/app/interfaces/field.interface';
 
 @Component({
+  exportAs: 'dynamicForm',
   selector: 'app-dynamic-form',
   template: `
-    <form class="dynamic-form" [formGroup]="form" (submit)="onSubmit($event)">
-      <ng-container *ngFor="let field of fields;" dynamicField [field]="field" [group]="form">
-      </ng-container>
-    </form>
+  <form class="dynamic-form" [formGroup]="form" (submit)="onSubmit($event)">
+  <ng-container *ngFor="let field of fields;" dynamicField [field]="field" [group]="form">
+  </ng-container>
+  </form>
   `,
   styleUrls: ['./dynamic-form.component.scss']
 })

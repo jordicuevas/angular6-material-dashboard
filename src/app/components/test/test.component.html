@@ -1,23 +1,32 @@
-<div class="form">
+<div class="container">
 
-  <div style="text-align:center">
+  <div class="row">
+    <div class="col-md-12">
+    <div class="form">
 
-    <h1>
+      <div style="text-align:center">
 
-      Registration Form
+        <h1>
 
-    </h1>
+          Registration Form
 
+        </h1>
+
+      </div>
+
+      <app-dynamic-form [fields]="regConfig" (submit)="submit($event)">
+
+      </app-dynamic-form>
+
+      <div class="margin-top">
+
+        {{ form.value | json }}
+
+      </div>
+
+    </div>
+    </div>
   </div>
-
-  <dynamic-form [fields]="regConfig" (submit)="submit($event)">
-
-  </dynamic-form>
-
-  <div class="margin-top">
-
-    {{ form.value | json }}
-
-  </div>
-
 </div>
+
+

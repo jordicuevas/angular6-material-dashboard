@@ -15,33 +15,33 @@ export class TestComponent implements OnInit {
 
     {
 
-      type: "input",
+      type: 'input',
 
-      label: "Username",
+      label: 'Username',
 
-      inputType: "text",
+      inputType: 'text',
 
-      name: "name",
+      name: 'name',
 
       validations: [
 
         {
 
-          name: "required",
+          name: 'required',
 
           validator: Validators.required,
 
-          message: "Name Required"
+          message: 'Name Required'
 
         },
 
         {
 
-          name: "pattern",
+          name: 'pattern',
 
-          validator: Validators.pattern("^[a-zA-Z]+$"),
+          validator: Validators.pattern('^[a-zA-Z]+$'),
 
-          message: "Accept only text"
+          message: 'Accept only text'
 
         }
 
@@ -51,37 +51,37 @@ export class TestComponent implements OnInit {
 
     {
 
-      type: "input",
+      type: 'input',
 
-      label: "Email Address",
+      label: 'Email Address',
 
-      inputType: "email",
+      inputType: 'email',
 
-      name: "email",
+      name: 'email',
 
       validations: [
 
         {
 
-          name: "required",
+          name: 'required',
 
           validator: Validators.required,
 
-          message: "Email Required"
+          message: 'Email Required'
 
         },
 
         {
 
-          name: "pattern",
+          name: 'pattern',
 
           validator: Validators.pattern(
 
-            "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$"
+            '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'
 
           ),
 
-          message: "Invalid email"
+          message: 'Invalid email'
 
         }
 
@@ -91,23 +91,23 @@ export class TestComponent implements OnInit {
 
     {
 
-      type: "input",
+      type: 'input',
 
-      label: "Password",
+      label: 'Password',
 
-      inputType: "password",
+      inputType: 'password',
 
-      name: "password",
+      name: 'password',
 
       validations: [
 
         {
 
-          name: "required",
+          name: 'required',
 
           validator: Validators.required,
 
-          message: "Password Required"
+          message: 'Password Required'
 
         }
 
@@ -117,35 +117,35 @@ export class TestComponent implements OnInit {
 
     {
 
-      type: "radiobutton",
+      type: 'radiobutton',
 
-      label: "Gender",
+      label: 'Gender',
 
-      name: "gender",
+      name: 'gender',
 
-      options: ["Male", "Female"],
+      options: ['Male', 'Female'],
 
-      value: "Male"
+      value: 'Male'
 
     },
 
     {
 
-      type: "date",
+      type: 'date',
 
-      label: "DOB",
+      label: 'DOB',
 
-      name: "dob",
+      name: 'dob',
 
       validations: [
 
         {
 
-          name: "required",
+          name: 'required',
 
           validator: Validators.required,
 
-          message: "Date of Birth Required"
+          message: 'Date of Birth Required'
 
         }
 
@@ -155,25 +155,25 @@ export class TestComponent implements OnInit {
 
     {
 
-      type: "select",
+      type: 'select',
 
-      label: "Country",
+      label: 'Country',
 
-      name: "country",
+      name: 'country',
 
-      value: "UK",
+      value: 'UK',
 
-      options: ["India", "UAE", "UK", "US"]
+      options: ['India', 'UAE', 'UK', 'US']
 
     },
 
     {
 
-      type: "checkbox",
+      type: 'checkbox',
 
-      label: "Accept Terms",
+      label: 'Accept Terms',
 
-      name: "term",
+      name: 'term',
 
       value: true
 
@@ -181,9 +181,9 @@ export class TestComponent implements OnInit {
 
     {
 
-      type: "button",
+      type: 'button',
 
-      label: "Save"
+      label: 'Save'
 
     }
 

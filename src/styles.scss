@@ -11,6 +11,17 @@
 // should be after your bootstrap imports, it uses bs4 variables, mixins, functions
 @import '~ngx-toastr/toastr-bs4-alert';
 
+
+.font-logo{
+
+  font-family: 'Pacifico', cursive;
+  font-size:1.6em;
+
+}
+.font-logo-variant{
+
+  font-family: 'Yellowtail', cursive;
+}
 html,
 body {
     height: 100%;

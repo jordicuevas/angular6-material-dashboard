@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
@@ -19,27 +19,38 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        outlet : 'principal'
       },
       {
         path: 'clients',
-        component: TableComponent ,  data: {'model': ClientsModel}
+        component: TableComponent ,  data: {'model': ClientsModel},
+        outlet : 'principal'
       },
       {
         path: 'vehicles',
-        component: TableComponent ,  data: {'model': VehiclesModel}
+        component: TableComponent ,  data: {'model': VehiclesModel},
+        outlet : 'principal'
+
       },
       {
         path: 'reservation',
-        component: TeetimeComponent
+        component: TeetimeComponent,
+        outlet : 'principal'
+
       },
       {
         path: 'forms',
-        component: TestComponent
+        component: TestComponent,
+        outlet: 'leftBar'
       }
     ]
   }
 ];
+
+export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

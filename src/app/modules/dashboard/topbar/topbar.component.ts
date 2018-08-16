@@ -14,6 +14,7 @@ import {
 } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
 declare interface RouteInfo {
     path: string;
     title: string;
@@ -26,6 +27,8 @@ export const ROUTES: RouteInfo[] = [
     { path: 'vehicles', title: 'Vehiculos',  icon: 'dashboard', class: ''},
     { path: 'reservation', title: 'Reservar',  icon: 'dashboard', class: ''}
 ];
+
+
 
 @Component({
   selector: 'app-topbar',

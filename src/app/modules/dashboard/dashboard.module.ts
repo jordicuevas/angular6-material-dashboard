@@ -14,7 +14,7 @@ import { HttpUtilsModule} from '../http-utils/http-utils.module';
     CommonModule,
     MaterialModule,
     RouterModule,
-    HttpUtilsModule
+    HttpUtilsModule,
   ],
   exports: [
     TopbarComponent,
@@ -22,6 +22,7 @@ import { HttpUtilsModule} from '../http-utils/http-utils.module';
     DashboardComponent,
     InitComponent
   ],
+
   declarations: [TopbarComponent, FooterComponent, DashboardComponent, InitComponent]
 })
 export class DashboardModule { }

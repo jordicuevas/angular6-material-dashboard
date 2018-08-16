@@ -2,10 +2,8 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">
-           <svg class="animated infinite shake" style="width:32px;height:32px" viewBox="0 0 24 24">
-            <path fill="#FFFFFF" d="M9.29,3.25L5.16,6.72L4,5.34L8.14,1.87L9.29,3.25M22,5.35L20.84,6.73L16.7,3.25L17.86,1.87L22,5.35M13,4A8,8 0 0,1 21,12A8,8 0 0,1 13,20A8,8 0 0,1 5,12A8,8 0 0,1 13,4M13,6A6,6 0 0,0 7,12A6,6 0 0,0 13,18A6,6 0 0,0 19,12A6,6 0 0,0 13,6M12,7.5H13.5V12.03L16.72,13.5L16.1,14.86L12,13V7.5M1,14C1,11.5 2.13,9.3 3.91,7.83C3.33,9.1 3,10.5 3,12L3.06,13.13L3,14C3,16.28 4.27,18.26 6.14,19.28C7.44,20.5 9.07,21.39 10.89,21.78C10.28,21.92 9.65,22 9,22A8,8 0 0,1 1,14Z"
-           />
-           </svg> &nbsp;TeeTime
+      <span class="font-logo">TeeTime</span>
+      &nbsp;<i class="fas fa-golf-ball animated rubberBand infinite"></i>
     </mat-toolbar>
     <mat-nav-list>
       <!-- User Profile -->
@@ -28,13 +26,13 @@
            </mat-expansion-panel>
        </mat-accordion>
        <mat-list>
-         <a [routerLink]="['dashboard']" mat-list-item href="#">
+         <a [routerLink]="[{ outlets: {principal: ['dashboard'] } }]" mat-list-item href="#">
               <mat-list-item>
                 <mat-icon class="material-icons md-18">dashboard</mat-icon>
                 <span class="nav__element__size"   >Dashboard</span>
               </mat-list-item>
          </a>
-         <a [routerLink]="['clients']" mat-list-item href="#">
+         <a [routerLink]="[ 'clients']" mat-list-item href="#">
               <mat-list-item>
                  <mat-icon class="material-icons md-18">dashboard</mat-icon>
                  <span class="nav__element__size"   >Clientes</span>
@@ -52,7 +50,7 @@
                   <span class="nav__element__size"   >Reservar </span>
              </mat-list-item>
          </a>
-         <a [routerLink]="['forms']" mat-list-item href="#">
+         <a [routerLink]="[{ outlets: { principal:['clients'],leftBar: ['forms'] } }]" mat-list-item href="#">
             <mat-list-item>
                   <mat-icon class="material-icons md-18">dashboard</mat-icon>
                   <span class="nav__element__size"   >forms</span>
@@ -100,25 +98,16 @@
     <!-- Add Content Here -->
     <div class="full-content">
       <div class="zippy--router-outlet">
-        <router-outlet></router-outlet>
+        <router-outlet name="principal"></router-outlet>
       </div>
     </div>
     <mat-sidenav mode="push"   class="left-navbar" #left position="end">
       <mat-icon (click)="left.toggle()" class=" panel-close zippy__pointer">clear</mat-icon>
       <mat-divider></mat-divider>
-      <mat-tab-group   color="primary">
-        <mat-tab label="Notificaciones">
-          <mat-list>
-            <mat-list-item> Notificacion 1  </mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item> Notificacion 2</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item> Notificacion 3  </mat-list-item>
-          </mat-list>
-        </mat-tab>
-        <mat-tab label="Noticias Recientes "></mat-tab>
-        <mat-tab label="Configuraciones"></mat-tab>
-      </mat-tab-group>
+
+       <router-outlet name="leftBar"></router-outlet>
+
+
     </mat-sidenav>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -6,7 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
 import { FormComponent } from '../../form/form/form.component';
 import { UserData } from '../../../../models/clients/clients.model';
-
+import { LeftbarService } from '../../../../services/leftbar.service';
+import { LeftbarComponent } from '../../../dashboard/leftbar/leftbar.component';
 
 /** Constants used to fill up our data base. */
 const COLORS: string[] = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
@@ -21,8 +22,8 @@ const NAMES: string[] = ['Mariale', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jac
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  // displayedColumns: string[] = this.array;
-  // columnsToDisplay: string[] = this.displayedColumns.slice();
+   // displayedColumns: string[] = this.array;
+  // columnsToDisplay: strinsidenavg[] = this.displayedColumns.slice();
   displayedColumns: string[];
   columnsToDisplay: string[];
   // we passed the structure of the model class
@@ -31,9 +32,10 @@ export class TableComponent implements OnInit {
   keys: string[];
   public catalogTitle;
   public catalogIcon;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  public toggleActive: any = false;
+   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private route: ActivatedRoute, private bottomSheet: MatBottomSheet) {
+  constructor(private route: ActivatedRoute, private bottomSheet: MatBottomSheet, private sidenav: LeftbarService) {
     // passing route data with activatedroute (data = ClientsModule)
     const data: any = this.route.snapshot.data;
 
@@ -61,6 +63,15 @@ export class TableComponent implements OnInit {
     // "here comes the json of API or import from model"
     this.dataSource = new MatTableDataSource(users);
   }
+
+// para cargar el boton flotante
+
+  toggleLeftSidenav() {
+    this.toggleActive = !this.toggleActive;
+    this.sidenav.toggle();
+
+    console.log('Clicked');
+  }
   // we called button function
   openBottomSheet(): void {
     this.bottomSheet.open(FormComponent, {
@@ -69,12 +80,11 @@ export class TableComponent implements OnInit {
       }
     });
   }
-
+  // boton flotante
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
   // filter input
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -97,6 +107,11 @@ function createNewUser(id: number): UserData {
     progress: Math.round(Math.random() * 100).toString(),
     color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
   };
+
+
+
+
 }
+
 
 

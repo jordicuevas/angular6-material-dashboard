@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, Input} from '@angular/core';
 import { MatSidenav } from '@angular/material';
+import { LeftbarService } from '../../../services/leftbar.service';
+import { LeftbarComponent } from '../leftbar/leftbar.component';
 import {
   BreakpointObserver,
   Breakpoints,
@@ -14,6 +16,7 @@ import {
 } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
 
 declare interface RouteInfo {
     path: string;
@@ -47,10 +50,18 @@ export class TopbarComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     public router: Router,
     public location: Location,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private sidenav: LeftbarService) {
     this.location = location;
   }
+  toggleActive:any = false;
 
+  toggleLeftSidenav() {
+    this.toggleActive = !this.toggleActive;
+    this.sidenav.toggle();
+
+    console.log('Clicked');
+  }
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     // this.toastr.success('Hello world!', 'Toastr fun!',{'progressBar': true});
@@ -68,6 +79,6 @@ export class TopbarComponent implements OnInit {
         return this.listTitles[item].title;
       }
     }
-    // return 'Dashboard';
+      return 'Menu';
   }
 }

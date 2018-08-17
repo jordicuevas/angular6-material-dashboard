@@ -24,6 +24,7 @@ import { CheckboxComponent } from './utils/component/checkbox/checkbox.component
 import { DynamicFieldDirective } from './utils/component/dynamic-field.directive';
 import { DynamicFormComponent } from './utils/component/dynamic-form/dynamic-form.component';
 import { TestComponent } from './components/test/test.component';
+import { LeftbarService } from './services/leftbar.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { TestComponent } from './components/test/test.component';
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  providers: [ HttpUtilsModule],
+  providers: [ HttpUtilsModule, LeftbarService ],
   bootstrap: [AppComponent],
   entryComponents: [
     FormComponent,

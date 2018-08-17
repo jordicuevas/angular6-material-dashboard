@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from '../../material';
 import { RouterModule } from '@angular/router';
 import { HttpUtilsModule} from '../http-utils/http-utils.module';
+import { LeftbarComponent } from './leftbar/leftbar.component';
 
 @NgModule({
   imports: [
@@ -20,9 +21,10 @@ import { HttpUtilsModule} from '../http-utils/http-utils.module';
     TopbarComponent,
     FooterComponent,
     DashboardComponent,
-    InitComponent
+    InitComponent,
+    LeftbarComponent
   ],
 
-  declarations: [TopbarComponent, FooterComponent, DashboardComponent, InitComponent]
+  declarations: [TopbarComponent, FooterComponent, DashboardComponent, InitComponent, LeftbarComponent]
 })
 export class DashboardModule { }

@@ -1,10 +1,38 @@
-<mat-sidenav-container    class="sidenav-container">
+<mat-toolbar color="primary" style="border-bottom:1px solid #000000">
+  <span class="font-logo">TeeTime</span>
+  &nbsp;<i class="fas fa-golf-ball animated rubberBand infinite"></i>
+  &nbsp;&nbsp; &nbsp;&nbsp;
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggleLeftSidenav();isExpanded = !isExpanded">
+    <mat-icon aria-label="Side nav toggle icon">view_module</mat-icon>
+  </button>
+  <span>
+        <!--here comes routing title -->
+         {{ getTitle() }}
+      </span>
+  <span class="zippy__spacer"></span>
+  <div >
+    <mat-icon class="zippy_toolbar__icon zippy__pointer material-icons md-18 "
+              matTooltip="Notificaciones"
+              matBadge = "25"
+              matBadgeSize="medium"
+              matBadgePosition="before"
+              matBadgeColor="warn"
+              matTooltipPosition="left"
+              matTooltipClass = "zippy__tooltip__bg"
+              [matMenuTriggerFor]="notificationsMenu">
+      notification_important
+    </mat-icon>&nbsp;&nbsp;
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-menu  #notificationsMenu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+</mat-toolbar>
+<mat-sidenav-container  autosize   class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
-    <mat-toolbar color="primary">
-      <span class="font-logo">TeeTime</span>
-      &nbsp;<i class="fas fa-golf-ball animated rubberBand infinite"></i>
-    </mat-toolbar>
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)"  >
+
     <mat-nav-list>
       <!-- User Profile -->
        <mat-accordion>
@@ -26,7 +54,8 @@
            </mat-expansion-panel>
        </mat-accordion>
        <mat-list>
-         <a [routerLink]="[{ outlets: { principal: ['dashboard'] , leftBar : null } }]" mat-list-item href="#">
+
+         <a  [routerLink]="[{ outlets: { principal: ['dashboard'] , leftBar : null } }]" mat-list-item href="#">
               <mat-list-item>
                 <mat-icon class="material-icons md-18">dashboard</mat-icon>
                 <span class="nav__element__size"   >Dashboard</span>
@@ -62,53 +91,14 @@
   </mat-sidenav>
   
   <mat-sidenav-content style="overflow:hidden;">
-    <mat-toolbar color="primary">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle();isExpanded = !isExpanded">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>
-        <!--here comes routing title -->
-         {{ getTitle() }}
-      </span>
-      
-        <span class="zippy__spacer"></span>
-        <div >
-          <mat-icon class="zippy_toolbar__icon zippy__pointer material-icons md-18 "
-                    matTooltip="Notificaciones"
-                    matBadge = "25"
-                    matBadgeSize="medium"
-                    matBadgePosition="before"
-                    matBadgeColor="warn"
-                    matTooltipPosition="left"
-                    matTooltipClass = "zippy__tooltip__bg"
-                    [matMenuTriggerFor]="notificationsMenu">
-            notification_important
-          </mat-icon>&nbsp;&nbsp;
-        </div>
-           &nbsp;&nbsp;&nbsp;&nbsp;
-      <mat-menu  #notificationsMenu="matMenu">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>
 
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="left.toggle();isExpanded = !isExpanded">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-    </mat-toolbar>
     <!-- Add Content Here -->
     <div class="full-content">
       <div class="zippy--router-outlet">
         <router-outlet name="principal"></router-outlet>
       </div>
     </div>
-    <mat-sidenav mode="push"   class="left-navbar" #left position="end">
-      <mat-icon (click)="left.toggle()" class=" panel-close zippy__pointer">clear</mat-icon>
-      <mat-divider></mat-divider>
-
-       <router-outlet name="leftBar"></router-outlet>
-
-
-    </mat-sidenav>
+   <app-leftbar></app-leftbar>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

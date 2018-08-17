@@ -13,6 +13,7 @@ import { TeetimeComponent } from './modules/utils/teetime/teetime/teetime.compon
 import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
+
   {
     path: 'init',
     component: InitComponent,
@@ -20,18 +21,17 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        outlet : 'principal'
+        outlet: 'principal'
       },
       {
         path: 'clients',
         component: TableComponent ,  data: {'model': ClientsModel},
-        outlet : 'principal'
+        outlet: 'principal'
       },
       {
         path: 'vehicles',
         component: TableComponent ,  data: {'model': VehiclesModel},
-        outlet : 'principal'
-
+        outlet: 'principal'
       },
       {
         path: 'reservation',
@@ -44,8 +44,9 @@ const routes: Routes = [
         component: TestComponent,
         outlet: 'leftBar'
       }
-    ]
-  }
+    ],
+  },
+  { path: '**', component: InitComponent }
 ];
 
 export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);

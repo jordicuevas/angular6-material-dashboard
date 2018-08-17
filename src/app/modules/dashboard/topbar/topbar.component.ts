@@ -57,6 +57,7 @@ export class TopbarComponent implements OnInit {
   }
   getTitle() {
     let titlee = this.location.prepareExternalUrl(this.location.path());
+     console.log(titlee);
     if (titlee.charAt(0) === '#') {
       titlee = titlee.slice(2);
     }
@@ -67,6 +68,6 @@ export class TopbarComponent implements OnInit {
         return this.listTitles[item].title;
       }
     }
-    return 'Dashboard';
+    // return 'Dashboard';
   }
 }

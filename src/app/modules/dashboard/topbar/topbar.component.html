@@ -2,7 +2,7 @@
   <span class="font-logo">TeeTime</span>
   &nbsp;<i class="fas fa-golf-ball animated rubberBand infinite"></i>
   &nbsp;&nbsp; &nbsp;&nbsp;
-  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggleLeftSidenav();isExpanded = !isExpanded">
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle();isExpanded = !isExpanded">
     <mat-icon aria-label="Side nav toggle icon">view_module</mat-icon>
   </button>
   <span>
@@ -33,61 +33,7 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)"  >
 
-    <mat-nav-list>
-      <!-- User Profile -->
-       <mat-accordion>
-           <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                   <mat-panel-title>
-                      <div mat-card-avatar class="user-avatar">  </div>&nbsp;
-                          <span class="zippy__user__name">Bienvenido Sysadmin</span>
-                    </mat-panel-title>
-              </mat-expansion-panel-header>
-             <mat-list role="list" >
-                <mat-divider></mat-divider>
-                <mat-list-item role="listitem"><mat-icon class="material-icons md-18">assignment_ind</mat-icon> &nbsp;<span class="user__profile">Perfil</span></mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item role="listitem"><mat-icon class="material-icons md-18">directions_run</mat-icon> &nbsp;<span class="user__profile">Cerrar sesión</span></mat-list-item>
-                <mat-divider></mat-divider>
-             </mat-list>
-           <!-- Content Goes Here -->
-           </mat-expansion-panel>
-       </mat-accordion>
-       <mat-list>
-
-         <a  [routerLink]="[{ outlets: { principal: ['dashboard'] , leftBar : null } }]" mat-list-item href="#">
-              <mat-list-item>
-                <mat-icon class="material-icons md-18">dashboard</mat-icon>
-                <span class="nav__element__size"   >Dashboard</span>
-              </mat-list-item>
-         </a>
-         <a [routerLink]="[{ outlets: { principal: ['clients']  , leftBar :['forms'] }}]" mat-list-item href="#">
-              <mat-list-item>
-                 <mat-icon class="material-icons md-18">dashboard</mat-icon>
-                 <span class="nav__element__size"   >Clientes</span>
-              </mat-list-item>
-         </a>
-         <a [routerLink]="[{ outlets: { principal: ['vehicles'] , leftBar : null } }]" mat-list-item href="#">
-              <mat-list-item>
-                  <mat-icon class="material-icons md-18">dashboard</mat-icon>
-                  <span class="nav__element__size"   >Vehiculos</span>
-              </mat-list-item>
-         </a>
-         <a [routerLink]="[{ outlets: { principal: ['reservation'] , leftBar : null } }]" mat-list-item href="#">
-             <mat-list-item>
-                  <mat-icon class="material-icons md-18">dashboard</mat-icon>
-                  <span class="nav__element__size"   >Reservar </span>
-             </mat-list-item>
-         </a>
-         <a [routerLink]="[{ outlets: {  principal : null , leftBar: ['forms'] } }]" mat-list-item href="#">
-            <mat-list-item>
-                  <mat-icon class="material-icons md-18">dashboard</mat-icon>
-                  <span class="nav__element__size"   >forms</span>
-            </mat-list-item>
-         </a>
-         <mat-divider></mat-divider>
-       </mat-list>
-    </mat-nav-list>
+     <app-menu></app-menu>
   </mat-sidenav>
   
   <mat-sidenav-content style="overflow:hidden;">

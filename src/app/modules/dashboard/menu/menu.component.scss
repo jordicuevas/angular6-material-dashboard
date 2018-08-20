@@ -1,0 +1,35 @@
+.user-avatar {
+  background-image: url('https://www.w3schools.com/bootstrap4/img_avatar3.png');
+  background-size: cover;
+  width:60px;
+  height: 40px;
+  border-radius : 25px;
+  margin-top: 3px;
+}
+.user__profile {
+  font-family: 'Roboto',
+  sans-serif;
+  font-size:12px !important;
+  color:#FFFFFF;
+
+}
+.user-profile-accordion {
+  background-color: #5c5346 !important;
+  color: #FFFFFF !important;
+}
+
+.zippy__user__name{
+  padding-top:7px;
+  font-family: 'Roboto',
+  sans-serif;
+  font-size:12px !important;
+  color: #FFFFFF;
+}
+.list .mat-list {
+  padding-top: 0;
+  /* .mat-list also has an additional padding top  */
+}
+.mat-list, .mat-nav-list, .mat-selection-list {
+  padding-top: 0 !important;
+  display: block;
+}

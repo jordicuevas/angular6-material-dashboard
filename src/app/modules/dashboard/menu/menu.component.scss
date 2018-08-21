@@ -33,3 +33,19 @@
   padding-top: 0 !important;
   display: block;
 }
+
+
+
+.list .mat-list .mat-list-item {
+  height: auto !important;
+  /* To avoid calculated height from mat-line-x classes */
+}
+
+.zippy__pointer {
+  cursor: pointer;
+}
+
+.mat-list .mat-list-item {
+  height: 40px !important;
+  /* default is 72px */
+}

@@ -6,27 +6,25 @@
            <img class="card-img-top" src="assets/images/teetime.jpg" alt="Card image">
            <div class="card-body">
              <h4 class="card-title">
-                 <div class="ribbon base"><span> Hoyo 1</span></div>
+               <div class="ribbon base"><span> Hoyo 1</span></div>
              </h4>
               <mat-expansion-panel>
                <mat-expansion-panel-header>
                  <mat-panel-title>
-                   Horarios:
+                   Horarios
                  </mat-panel-title>
-
                </mat-expansion-panel-header>
-
               <mat-selection-list #availableHours >
                 <mat-list-option *ngFor="let horas of horarios" selected = "true">
-                  {{ horas}}
+                  {{ horas }}
                 </mat-list-option>
               </mat-selection-list>
-                <p>
+                 <p>
                   Options selected: {{ availableHours.selectedOptions.selected.length}}
-                </p>
+                 </p>
              </mat-expansion-panel>
-            <br>
-             <a href="#" class="btn btn-primary">Reservar</a>
+             <br>
+             <a href="#" class="btn btn-primary">Programar</a>
            </div>
         </div>
       </div>
@@ -34,7 +32,7 @@
     <div class="col-md-3 col-xs-12">
       <div class="teetime-table" align="center">
         <div class="card" style="width:100%">
-          <img class="card-img-top" src="assets/images/teetime.jpg" alt="Card image">
+          <img class="card-img-top" src="assets/images/hoyo10.jpg" alt="Card image">
           <div class="card-body">
             <h4 class="card-title">
               <div class="ribbon red teetime-table"><span> Hoyo 10</span></div>
@@ -42,11 +40,9 @@
             <mat-expansion-panel>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Horarios:
+                  Horarios
                 </mat-panel-title>
-
               </mat-expansion-panel-header>
-
               <mat-selection-list #availableHours >
                 <mat-list-option *ngFor="let horas of horarios" selected = "true">
                   {{ horas}}
@@ -57,7 +53,7 @@
               </p>
             </mat-expansion-panel>
             <br>
-            <a href="#" class="btn btn-primary">Reservar</a>
+            <a href="#" class="btn btn-primary">Programar</a>
           </div>
         </div>
       </div>

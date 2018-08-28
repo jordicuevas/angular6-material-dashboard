@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
@@ -8,20 +8,15 @@ import { FormComponent } from '../../form/form/form.component';
 import { UserData } from '../../../../models/clients/clients.model';
 import { LeftbarService } from '../../../../services/leftbar.service';
 import { LeftbarComponent } from '../../../dashboard/leftbar/leftbar.component';
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray', 'brown'];
-const NAMES: string[] = ['Mariale', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Jordi', 'John', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
+import { HttpClient } from '@angular/common/http';
+import { Observable, interval, pipe } from 'rxjs';
+import { map, first } from 'rxjs/operators';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit , AfterViewInit {
    // displayedColumns: string[] = this.array;
   // columnsToDisplay: strinsidenavg[] = this.displayedColumns.slice();
   displayedColumns: string[];
@@ -32,36 +27,33 @@ export class TableComponent implements OnInit {
   keys: string[];
   public catalogTitle;
   public catalogIcon;
+  public endpoint;
   public toggleActive: any = false;
+  public data = []
+  public dataTable  ;
    @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  constructor(private route: ActivatedRoute, private bottomSheet: MatBottomSheet, private sidenav: LeftbarService) {
+   @ViewChild(MatSort) sort: MatSort;
+  constructor(public _http: HttpClient, private route: ActivatedRoute, private bottomSheet: MatBottomSheet, private sidenav: LeftbarService) {
     // passing route data with activatedroute (data = ClientsModule)
     const data: any = this.route.snapshot.data;
 
-    // get data model
+    // we get data model
     this.values = new data.model();
     this.catalogTitle = this.values.catalogTitle;
     this.catalogIcon = this.values.catalogIcon;
-    // get the object keys of data model
+    this.endpoint = this.values.endpoint;
+     // get the object keys of data model
     this.keys = [];
     Object.keys(this.values.data).forEach(key => {
-       if (this.values.data[key].key === 'catalogName') {
+       if (this.values.data[key].key === 'catalogName' || this.values.data[key].key === 'endpoint') {
          return;
        } else {
          this.keys.push(this.values.data[key].title);
        }
     });
-    // we passed the keys to table header
-    this.displayedColumns = this.keys;
-    this.columnsToDisplay = this.displayedColumns.slice();
-
-    // Create 100 users
-    const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
     // "here comes the json of API or import from model"
-    this.dataSource = new MatTableDataSource(users);
   }
 
 // para cargar el boton flotante
@@ -72,16 +64,15 @@ export class TableComponent implements OnInit {
 
     console.log('Clicked');
   }
-  // we called button function
-  openBottomSheet(): void {
-    this.bottomSheet.open(FormComponent, {
-      data: {
-        values: this.values.data
-      }
-    });
-  }
   // boton flotante
   ngOnInit() {
+    this.getDatatable();
+
+    this.dataSource = new MatTableDataSource(this.dataTable);
+
+    // we passed the keys to table header
+    this.displayedColumns = this.keys;
+    this.columnsToDisplay = this.displayedColumns.slice();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -93,23 +84,18 @@ export class TableComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    Notificaciones: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
+  getDatatable () {
 
 
+    }
+    ngAfterViewInit() {
+      return   this._http.get(this.endpoint).subscribe(data => {
+          this.dataTable = data;
 
+        }
+      );
+    }
 
 }
 

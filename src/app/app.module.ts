@@ -23,9 +23,11 @@ import { RadiobuttonComponent } from './utils/component/radiobutton/radiobutton.
 import { CheckboxComponent } from './utils/component/checkbox/checkbox.component';
 import { DynamicFieldDirective } from './utils/component/dynamic-field.directive';
 import { DynamicFormComponent } from './utils/component/dynamic-form/dynamic-form.component';
-import { TestComponent } from './components/test/test.component';
+import { ProgrammingComponent } from './components/programming/programming.component';
 import { LeftbarService } from './services/leftbar.service';
-
+import { CalendarModule } from 'angular-calendar';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,7 @@ import { LeftbarService } from './services/leftbar.service';
     CheckboxComponent,
     DynamicFieldDirective,
     DynamicFormComponent,
-    TestComponent,
+    ProgrammingComponent,
    ],
   imports: [
     BrowserModule,
@@ -55,6 +57,9 @@ import { LeftbarService } from './services/leftbar.service';
     ReactiveFormsModule,
     FormsModule,
     TeetimeModule,
+    CalendarModule.forRoot(),
+    FlatpickrModule.forRoot(),
+    NgbModule
 
    ],
   schemas: [

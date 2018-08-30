@@ -1,0 +1,35 @@
+body {
+
+  margin: 0;
+
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+.teetime-schedule{
+  margin-top:10px;
+}
+
+.form-side{
+  box-shadow: 0px 0px 10px gray;
+   //height: 100%;
+  overflow:hidden;
+
+  //margin-top:20px;
+  padding:20px;
+  position:absolute;
+  background: white;
+   }
+.calendar-side {
+   padding-bottom:60px;
+   position:absolute;
+   padding-left:50px;
+
+}
+
+body,html {
+  background-color: #cf8e80;
+
+}

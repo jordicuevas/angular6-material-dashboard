@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
 import { FormComponent } from '../../form/form/form.component';
-import { UserData } from '../../../../models/clients/clients.model';
+import { UserData } from '../../../../models/programming/programming.model';
 import { LeftbarService } from '../../../../services/leftbar.service';
 import { LeftbarComponent } from '../../../dashboard/leftbar/leftbar.component';
 import { HttpClient } from '@angular/common/http';
@@ -61,8 +61,6 @@ export class TableComponent implements OnInit , AfterViewInit {
   toggleLeftSidenav() {
     this.toggleActive = !this.toggleActive;
     this.sidenav.toggle();
-
-    console.log('Clicked');
   }
   // boton flotante
   ngOnInit() {

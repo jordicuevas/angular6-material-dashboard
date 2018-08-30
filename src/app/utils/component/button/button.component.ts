@@ -13,5 +13,10 @@ export class ButtonComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  showAlert(){
+    console.log("hola")
+  }
+  mostrarNombre (){
+    
+  }
 }

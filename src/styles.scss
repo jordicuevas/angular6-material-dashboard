@@ -5,12 +5,17 @@
 // regular style toast
 @import '~bootstrap/scss/bootstrap';
 @import '~ngx-toastr/toastr.css';
+@import "~angular-calendar/css/angular-calendar.css";
+
 
 // bootstrap style toast
 // or import a bootstrap 4 alert styled design (SASS ONLY)
 // should be after your bootstrap imports, it uses bs4 variables, mixins, functions
 @import '~ngx-toastr/toastr-bs4-alert';
 
+.zippy__pointer {
+  cursor: pointer;
+}
 
 .font-logo{
 
@@ -69,6 +74,11 @@ body {
  .material-icons.md-48 {
    font-size: 48px;
  }
+.material-icons.md-lg {
+  font-size: 10em;
+  color:#EEEEEE;
+  margin-left: -20vh;
+}
 
  .nav__element__size {
    font-family: 'Roboto', sans-serif;
@@ -289,4 +299,13 @@ body {
 
 .mat-drawer-backdrop.mat-drawer-shown {
  // visibility: hidden !important;
+}
+.cal-month-view .cal-header {
+  text-align: center;
+  font-weight: normal !important ;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #0062cc;
+  border-color: #005cbf;
 }

@@ -6,14 +6,12 @@ import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard/dashboard.component';
 import { InitComponent } from 'src/app/modules/dashboard/init/init.component';
 
-import { ClientsModel } from './models/clients/clients.model';
+ 
 import { TableComponent } from './modules/utils/table/table/table.component';
-import { VehiclesModel } from './models/vehicles/vehicles.model';
 import { TeetimeComponent } from './modules/utils/teetime/teetime/teetime.component';
-import { TestComponent } from './components/test/test.component';
-
+import { ProgrammingComponent } from './components/programming/programming.component';
+import { ProgrammingModel } from './models/programming/programming.model';
 const routes: Routes = [
-
   {
     path: 'init',
     component: InitComponent,
@@ -24,15 +22,11 @@ const routes: Routes = [
         outlet: 'principal'
       },
       {
-        path: 'clients',
-        component: TableComponent ,  data: {'model': ClientsModel},
+        path: 'programar',
+        component: TableComponent ,  data: {'model': ProgrammingModel},
         outlet: 'principal'
       },
-      {
-        path: 'vehicles',
-        component: TableComponent ,  data: {'model': VehiclesModel},
-        outlet: 'principal'
-      },
+      
       {
         path: 'reservation',
         component: TeetimeComponent,
@@ -40,8 +34,8 @@ const routes: Routes = [
 
       },
       {
-        path: 'forms',
-        component: TestComponent,
+        path: 'programmingForm',
+        component: ProgrammingComponent,
         outlet: 'leftBar'
       }
     ],

@@ -59,17 +59,14 @@ export class TopbarComponent implements OnInit {
   toggleLeftSidenav() {
     this.toggleActive = !this.toggleActive;
     this.sidenav.toggle();
-
-    console.log('Clicked');
-  }
+   } 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     // this.toastr.success('Hello world!', 'Toastr fun!',{'progressBar': true});
   }
   getTitle() {
     let titlee = this.location.prepareExternalUrl(this.location.path());
-     console.log(titlee);
-    if (titlee.charAt(0) === '#') {
+     if (titlee.charAt(0) === '#') {
       titlee = titlee.slice(2);
     }
     titlee = titlee.split('/').pop();

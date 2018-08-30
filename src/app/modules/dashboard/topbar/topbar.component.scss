@@ -9,7 +9,7 @@
 .mat-sidenav-layout{
   height: 100%;
   background-color:#EEEEEE;
-} 
+}
 .user-avatar {
   background-image: url('https://www.w3schools.com/bootstrap4/img_avatar3.png');
   background-size: cover;
@@ -50,7 +50,7 @@
   min-height: 100%;
   // padding-top:55px;
   min-width:30px !important;
-  z-index: 999999;
+  z-index: 9;
 
 }
 .mat-list, .mat-nav-list, .mat-selection-list {
@@ -83,9 +83,6 @@
   /* To avoid calculated height from mat-line-x classes */
  }
 
-.zippy__pointer {
-  cursor: pointer;
-}
 
 .zippy__user__name{
   padding-top:7px;
@@ -100,12 +97,7 @@
   /* default is 72px */
 }
 
-.left-navbar{
-  position: fixed;
-  z-index: 99999999;
-  min-height: 100%;
-  padding: 10px;
- }
+
 
 .panel-close{
   padding-top:10px;
@@ -115,4 +107,7 @@
 .user-profile-accordion {
   background-color: #5c5346 !important;
   color: #FFFFFF !important;
+}
+.mat-drawer.mat-drawer-side {
+  z-index: 0 !important;
 }

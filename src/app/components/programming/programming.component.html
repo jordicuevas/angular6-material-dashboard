@@ -1,0 +1,100 @@
+<div class="container"  >
+  <div class="row">
+    <div class="form-side   animated col-md-{{colForm}}  {{animation}}">
+    <div>
+      <div style="text-align: center">
+        <h3 class="font-logo"><mat-icon >alarm</mat-icon>&nbsp;Programar Teetime</h3><span *ngIf="programColumns" class="pull-right">
+          <mat-icon (click)="resizeView()" class="zippy__pointer animated infinite flash">arrow_right_alt</mat-icon>
+        </span>
+        <mat-divider></mat-divider>
+
+      </div>
+      <div>
+        <img class="thumbnail" height="100" width="410" src="../assets/images/golf11.jpg" alt="">
+      </div>
+      <br>
+      <app-dynamic-form [fields]="regConfig" (submit)="submit($event)">
+      </app-dynamic-form>
+
+    </div>
+    </div>
+    <div *ngIf="flagProgram"  class="calendar-side animated {{animation}} offset-{{ offset }}  col-md-{{colCalendar}}">
+      <div  style="background: #FFF; padding:20px">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="btn-group">
+            <div
+              class="btn btn-primary"
+              mwlCalendarPreviousView
+              [view]="view"
+              [(viewDate)]="viewDate"
+              (viewDateChange)="activeDayIsOpen = false">
+              Anterior
+            </div>
+            <div
+              class="btn btn-outline-secondary"
+              mwlCalendarToday
+              [(viewDate)]="viewDate">
+              Hoy
+            </div>
+            <div
+              class="btn btn-primary"
+              mwlCalendarNextView
+              [view]="view"
+              [(viewDate)]="viewDate"
+              (viewDateChange)="activeDayIsOpen = false">
+              Siguiente
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+        </div>
+
+      </div>
+      <br>
+      <div [ngSwitch]="view">
+        <mwl-calendar-month-view
+          *ngSwitchCase="'month'"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          [activeDayIsOpen]="activeDayIsOpen"
+          (dayClicked)="dayClicked($event.day)"
+           (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view
+          *ngSwitchCase="'week'"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+           (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view
+          *ngSwitchCase="'day'"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+           (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-day-view>
+        </div>
+      </div>
+    </div><!-- FIN COL MD 8 -->
+    <div *ngIf="!flagProgram" class="offset-{{offset}}  col-md-7">
+      <div style="text-align: center; margin-top: 20vh">
+        <mat-icon class="material-icons  md-lg">alarm</mat-icon><br>&nbsp;
+        <div  >
+
+          <p>
+          <span style="text-align: center; color:#EEEEEE">
+              Realice una programacion de Teetime<br>
+              para previsualizarla aquí
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+

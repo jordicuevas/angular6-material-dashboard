@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { DashboardModule } from 'src/app/modules/dashboard/dashboard.module';
+import { AuthModule } from './modules/auth/auth.module';
 import { HttpUtilsModule } from 'src/app/modules/http-utils/http-utils.module';
 import { FormModule } from './modules/utils/form/form.module';
 import { TableModule } from './modules/utils/table/table.module';
@@ -59,7 +60,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     TeetimeModule,
     CalendarModule.forRoot(),
     FlatpickrModule.forRoot(),
-    NgbModule
+    NgbModule,
+    AuthModule
 
    ],
   schemas: [

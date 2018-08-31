@@ -1,0 +1,29 @@
+
+<div class="row">
+  <div class="column left">
+
+  </div>
+  <div class="column right">
+    <div class="animated jackInTheBox container">
+      <div class="card card-container">
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="assets/images/login.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form #f="ngForm" novalidate class="form-signin" (ngSubmit)="onSubmit(f.value)">
+           <mat-form-field class="input-full-width">
+            <input  [ngModel]="login.email" id="email" name="email" matInput placeholder="Correo electrónico" value=" ">
+          </mat-form-field>
+          <mat-form-field class="input-full-width">
+            <input   [ngModel]="login.password" name="password" matInput type="password" placeholder="Contraseña" value=" ">
+          </mat-form-field>
+
+          <button mat-raised-button color="primary">Ingresar</button>
+        </form><!-- /form -->
+        <div style="text-align: center">
+          <a href="#" class="forgot-password">
+            ¿Olvidó su contraseña?
+          </a>
+        </div>
+      </div><!-- /card-container -->
+    </div><!-- /container -->
+  </div>

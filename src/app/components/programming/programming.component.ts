@@ -156,13 +156,13 @@ export class ProgrammingComponent implements OnInit {
     }
   ];
 
-  // activeDayIsOpen: boolean = true;
+  activeDayIsOpen: boolean = false;
   constructor(  ) {
      this.flagProgram = false;
   }
 
   ngOnInit() {
-    console.log($('#plantilla').val());
+    console.log();
   }
    showAlert() {
 
@@ -173,8 +173,8 @@ export class ProgrammingComponent implements OnInit {
     this.colForm = 2;
     this.colCalendar = 9;
     this.animation = 'slideInRight';
-    this.offset= 2;
-  }
+    this.offset = 2;
+   }
   resizeView () {
     this.colForm = 4;
     this.colCalendar = 7;

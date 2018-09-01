@@ -10,11 +10,147 @@
 
       </div>
       <div>
-        <img class="thumbnail" height="100" width="410" src="../assets/images/golf11.jpg" alt="">
+        <img class="img-responsive thumbnail" height="100" width="410" src="../assets/images/golf11.jpg" alt="">
       </div>
       <br>
-      <app-dynamic-form [fields]="regConfig" (submit)="submit($event)">
-      </app-dynamic-form>
+      <!-- AQUI VA EL FORMULARIO  -->
+              <form [formGroup]="scheduleForm" #f="ngForm" novalidate (ngSubmit)=programmEvent($event)>
+                <!-- PLANTILLA -->
+               <mat-form-field  >
+                 <mat-select class="input-full-width" (selectionChange)="getTemplateValue($event.value)"   placeholder="Configuración">
+                   <mat-option disabled="" selected [value]="null">Seleccione un valor</mat-option>
+                   <mat-option  [value]="0">Guardada</mat-option>
+                   <mat-option  [value]="1">Personalizada</mat-option>
+                 </mat-select>
+               </mat-form-field>
+               &nbsp;
+                <!-- if plantillaGuardada -->
+               <mat-form-field *ngIf="flagPlantilla" [formGroup]="scheduleForm" >
+                 <mat-select  formControlName="plantilla" class="input-full-width"   placeholder="Seleccione la plantilla">
+                   <mat-option disabled="" selected [value]="null">Seleccione un valor</mat-option>
+                   <mat-option  [value]="0">Plantilla 1</mat-option>
+                   <mat-option  [value]="1">Plantilla 2 </mat-option>
+                 </mat-select>
+               </mat-form-field>
+               <br>
+               <mat-form-field class="input-full-width" style="display:none" [formGroup]="scheduleForm" >
+                 <input formControlName="context"  matInput placeholder="" value="Tee Time Club de Golf">
+               </mat-form-field>
+                <!-- target -->
+               <mat-form-field class="input-full-width" [formGroup]="scheduleForm">
+                 <mat-select formControlName = "target"  (selectionChange)="setTargetValue($event.value)"   placeholder="Seleccione el target">
+                   <mat-option disabled="" selected [value]="null">Seleccione un valor</mat-option>
+                   <mat-option  [value]="0">Ambos</mat-option>
+                   <mat-option  [value]="1">Hoyo 1</mat-option>
+                   <mat-option  [value]="10">Hoyo 10</mat-option>
+                 </mat-select>
+               </mat-form-field>
+               <mat-form-field class="input-full-width margin-top" [formGroup]="scheduleForm" >
+                 <input matInput [matDatepicker]="fechaIni" formControlName="fechaIni" placeholder="Fecha Inicio">
+                 <mat-datepicker-toggle matSuffix [for]="fechaIni"></mat-datepicker-toggle>
+                 <mat-error>
+                   <span *ngIf="!scheduleForm.get('fechaFin').valid && scheduleForm.get('fechaFin').touched">
+                     seleccione la fecha inicio
+                   </span>
+                 </mat-error>
+                 <mat-datepicker #fechaIni></mat-datepicker>
+
+               </mat-form-field>
+               <mat-form-field class="input-full-width margin-top" [formGroup]="scheduleForm" >
+                 <input matInput [matDatepicker]="fechaFin" formControlName="fechaFin" placeholder="Fecha Fin">
+                 <mat-datepicker-toggle matSuffix [for]="fechaFin"></mat-datepicker-toggle>
+                 <mat-datepicker #fechaFin></mat-datepicker>
+                 <mat-error>
+                   <span *ngIf="!scheduleForm.get('fechaFin').valid && scheduleForm.get('fechaFin').touched">
+                     seleccione la fecha fin
+                   </span>
+                 </mat-error>
+               </mat-form-field>
+                <br>
+                <mat-form-field class="input-full-width">
+                  <input matInput min="1" step="1" type="number" placeholder="Intervalo de Tiempo (minutos)" formControlName="size">
+                   <mat-error>
+                   <span *ngIf="!scheduleForm.get('size').valid && scheduleForm.get('size').touched">
+                     ingrese el intervalo de tiempo en minutos
+                   </span>
+                  </mat-error>
+                </mat-form-field>
+                <br>
+                <section class="days-section" >
+                  <div >
+                    <span class="form-title">Dias de la semana con servicio</span>
+                    <br>
+                    <!-- Dias de la semana -->
+                    <mat-checkbox class="example-margin"    formControlName="lunes"  labelPosition = 'after' >
+                       Lun
+                    </mat-checkbox> &nbsp;
+                    <mat-checkbox class="example-margin"    formControlName="martes"  labelPosition = 'after' >
+                       Mar
+                    </mat-checkbox>&nbsp;
+                    <mat-checkbox class="example-margin"    formControlName="miercoles"  labelPosition = 'after'>
+                       Mie
+                    </mat-checkbox>&nbsp;
+                    <mat-checkbox class="example-margin"    formControlName="jueves"  labelPosition = 'after' >
+                       Jue
+                    </mat-checkbox>&nbsp;
+                    <mat-checkbox class="example-margin"    formControlName="viernes"  labelPosition = 'after'>
+                       Vie
+                    </mat-checkbox>&nbsp;
+                    <mat-checkbox class="example-margin"    formControlName="sabado"  labelPosition = 'after' >
+                       Sab
+                    </mat-checkbox>&nbsp;
+                    <mat-checkbox class="example-margin"    formControlName="domingo"  labelPosition = 'after'>
+                       Dom
+                    </mat-checkbox>&nbsp;
+                  </div>
+                </section>
+                <br>
+                <span class="form-title">Horas de Servicio</span>
+                <br>
+                <div>
+                <mat-form-field  >
+                  <input matInput   type="time" placeholder="Hora desde" formControlName="horDesde">
+                  <mat-error>
+                   <span *ngIf="!scheduleForm.get('horDesde').valid && scheduleForm.get('horDesde').touched">
+                     ingrese la hora desde
+                   </span>
+                  </mat-error>
+                </mat-form-field>
+              &nbsp;
+                <mat-form-field  >
+                  <input matInput   type="time" placeholder="Hora hasta" formControlName="horHasta">
+                  <mat-error>
+                   <span *ngIf="!scheduleForm.get('horHasta').valid && scheduleForm.get('horHasta').touched">
+                     ingrese la hora hasta
+                   </span>
+                  </mat-error>
+                </mat-form-field>
+                  &nbsp;
+                  <mat-icon class="zippy__pointer" (click)="addLaborHour(scheduleForm.get('horDesde'), scheduleForm.get('horHasta').value)">add</mat-icon>
+
+                <br>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Hora Desde</th>
+                    <th scope="col">Hora Hasta</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+
+                  </tbody>
+                </table>
+                </div>
+              </form>
+       <!-- FIN DE FORMULARIO -->
 
     </div>
     </div>

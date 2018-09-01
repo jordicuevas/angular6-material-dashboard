@@ -3,7 +3,15 @@ body {
   margin: 0;
 
 }
-
+.form-title{
+  color:#9A9A9A;
+}
+.days-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
 .col-centered{
   float: none;
   margin: 0 auto;

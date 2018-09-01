@@ -5,9 +5,7 @@ import {
   ChangeDetectionStrategy,
   TemplateRef
 } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { FieldConfig } from 'src/app/interfaces/field.interface';
-import { DynamicFormComponent } from 'src/app/utils/component/dynamic-form/dynamic-form.component';
+import { FormBuilder, FormGroup, Validators , FormsModule, NgForm } from '@angular/forms';
 import {
   startOfDay,
   endOfDay,
@@ -25,7 +23,8 @@ import {
   CalendarEventTimesChangedEvent
 } from 'angular-calendar';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-const colors: any = {
+import { ReactiveFormsModule } from '@angular/forms';
+ const colors: any = {
   red: {
     primary: '#ad2121',
     secondary: '#FAE3E3'
@@ -47,63 +46,25 @@ declare var $: any;
   styleUrls: ['./programming.component.scss']
 })
 export class ProgrammingComponent implements OnInit {
-  @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
-  @ViewChild('modalContent') modalContent: TemplateRef<any>;
+   scheduleForm: FormGroup; // define the form group
+   @ViewChild('modalContent') modalContent: TemplateRef<any>;
   public flagProgram;
   public programColumns = false;
-  public colForm = 4 ;
-  public colCalendar = 7;
+  public colForm = 5 ;
+  public colCalendar = 6;
   public animation = 'zoomIn';
   public offset = 5;
-  view: string = 'month';
+  public flagPlantilla; // para ocultar o mostrar el select con las plantillas guardadas
+  public checked = true;
 
+  view: string = 'month';
   viewDate: Date = new Date();
 
   modalData: {
     action: string;
     event: CalendarEvent;
   };
-  regConfig: FieldConfig[] = [
 
-    {
-      type: 'date',
-      label: 'Fecha Inicio',
-      name: 'fecIni',
-      validations: [
-        {
-          name: 'required',
-          validator: Validators.required,
-          message: 'ingresa fecha inicio teetime'
-        }
-      ]
-    },{
-      type: 'date',
-      label: 'Fecha Fin',
-      name: 'fecFin',
-      validations: [
-        {
-          name: 'required',
-          validator: Validators.required,
-          message: 'ingrese fecha fin teetime'
-        }
-      ]
-    },
-    {
-      id:   'plantilla',
-      type: 'select',
-      label: 'Plantilla',
-      name: 'plantilla',
-      value: 'existente',
-      options: ['existente', 'nueva']
-
-    },
-
-    {
-      type: 'button',
-      label: 'Programar',
-      function: 'mostrarNombre'
-    }
-  ];
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -157,12 +118,30 @@ export class ProgrammingComponent implements OnInit {
   ];
 
   activeDayIsOpen: boolean = false;
-  constructor(  ) {
+  constructor( private fb: FormBuilder ) {
      this.flagProgram = false;
+     this.scheduleForm = fb.group({
+       fechaFin: ['', Validators.required],
+       fechaIni: ['', Validators.required],
+       size: ['', Validators.required, Validators.pattern('^[0-9]')],
+       target: ['', Validators.required],
+       lunes: [''],
+       martes: [''],
+       miercoles: [''],
+       jueves: [''],
+       viernes: [],
+       sabado: [],
+       domingo: [],
+       context: [],
+       horHasta : [],
+       horDesde : [ ]
+       // orangeFormEmail: ['', [Validators.required, Validators.email]],
+     // orangeFormPass: ['', [Validators.required, Validators.minLength(8)]]
+    });
   }
 
   ngOnInit() {
-    console.log();
+this.flagPlantilla = false; // inicializamos la plantilla en false
   }
    showAlert() {
 
@@ -176,8 +155,8 @@ export class ProgrammingComponent implements OnInit {
     this.offset = 2;
    }
   resizeView () {
-    this.colForm = 4;
-    this.colCalendar = 7;
+    this.colForm = 5;
+    this.colCalendar = 6;
     this.programColumns = false;
     this.animation = 'slideInLeft';
     this.offset= 4;
@@ -224,4 +203,27 @@ export class ProgrammingComponent implements OnInit {
     });
     this.refresh.next();
   }
+  /*
+  * form logic
+  * */
+  programmEvent(formValue) {
+    console.log(formValue);
+  }
+  getTemplateValue(templateValue) {
+    console.log(templateValue);
+    switch(templateValue){
+      case 0:
+        this.flagPlantilla = true;
+        break;
+      case 1:
+        this.flagPlantilla = false;
+        break;
+    }
+  }
+  setTargetValue(targetValue) {
+    console.log(targetValue);
+  }
+  addLaborHour( horDesde, horHasta) {
+    console.log(horDesde)
+}
 }

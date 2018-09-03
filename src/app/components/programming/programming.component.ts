@@ -6,6 +6,8 @@ import {
   TemplateRef
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , FormsModule, NgForm } from '@angular/forms';
+import { Platform } from '@angular/cdk/platform';
+
 import {
   startOfDay,
   endOfDay,
@@ -24,7 +26,8 @@ import {
 } from 'angular-calendar';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
- const colors: any = {
+
+  const colors: any = {
   red: {
     primary: '#ad2121',
     secondary: '#FAE3E3'
@@ -43,20 +46,28 @@ declare var $: any;
   selector: 'app-test',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './programming.component.html',
-  styleUrls: ['./programming.component.scss']
+  styleUrls: ['./programming.component.scss'],
+
 })
-export class ProgrammingComponent implements OnInit {
+export class ProgrammingComponent   implements OnInit {
    scheduleForm: FormGroup; // define the form group
-   @ViewChild('modalContent') modalContent: TemplateRef<any>;
+
+  /** A label for the cancel button */
+  cancelBtnLabel = 'Anular';
+
+  /** A label for the set button */
+  setBtnLabel = 'Confirmar';
+
+  @ViewChild('modalContent') modalContent: TemplateRef<any>;
   public flagProgram;
   public programColumns = false;
   public colForm = 5 ;
-  public colCalendar = 6;
+  public colCalendar = 7;
   public animation = 'zoomIn';
   public offset = 5;
   public flagPlantilla; // para ocultar o mostrar el select con las plantillas guardadas
   public checked = true;
-
+  public hoursOfLabor: any =  [];
   view: string = 'month';
   viewDate: Date = new Date();
 
@@ -118,8 +129,8 @@ export class ProgrammingComponent implements OnInit {
   ];
 
   activeDayIsOpen: boolean = false;
-  constructor( private fb: FormBuilder ) {
-     this.flagProgram = false;
+  constructor( private fb: FormBuilder   ) {
+      this.flagProgram = false;
      this.scheduleForm = fb.group({
        fechaFin: ['', Validators.required],
        fechaIni: ['', Validators.required],
@@ -134,7 +145,11 @@ export class ProgrammingComponent implements OnInit {
        domingo: [],
        context: [],
        horHasta : [],
-       horDesde : [ ]
+       horDesde : [ ],
+       fechaExFin: [],
+       horExIni: [],
+       horExFin: [],
+       fechaExIni: []
        // orangeFormEmail: ['', [Validators.required, Validators.email]],
      // orangeFormPass: ['', [Validators.required, Validators.minLength(8)]]
     });
@@ -155,8 +170,8 @@ this.flagPlantilla = false; // inicializamos la plantilla en false
     this.offset = 2;
    }
   resizeView () {
-    this.colForm = 5;
-    this.colCalendar = 6;
+    this.colForm = 6; //default 4
+    this.colCalendar = 7;
     this.programColumns = false;
     this.animation = 'slideInLeft';
     this.offset= 4;
@@ -211,7 +226,7 @@ this.flagPlantilla = false; // inicializamos la plantilla en false
   }
   getTemplateValue(templateValue) {
     console.log(templateValue);
-    switch(templateValue){
+    switch (templateValue) {
       case 0:
         this.flagPlantilla = true;
         break;
@@ -223,7 +238,32 @@ this.flagPlantilla = false; // inicializamos la plantilla en false
   setTargetValue(targetValue) {
     console.log(targetValue);
   }
-  addLaborHour( horDesde, horHasta) {
-    console.log(horDesde)
+  /*
+  * Add labor hours to array
+  * */
+  addLaborHour(fechaDesde, fechaHasta ) {
+
+console.log(fechaDesde);
+
+   /* let fechaD = this.reorderDate(fechaDesde);
+    console.log(fechaD)
+    let fechaH = this.reorderDate(fechaHasta);
+    console.log(fechaH)
+    let horaDesde = horDesde.value;
+    let horaHasta = horHasta.value;*/
+    let labourHour = fechaDesde +  ' - '  + fechaHasta
+    this.hoursOfLabor.push(labourHour);
 }
+  deleteLabourHour(id) {
+    console.log(id);
+     this.hoursOfLabor.splice( id , 1);
+  }
+  reorderDate( dateToOrder) {
+    let day   = dateToOrder.value['_i'].date;
+    let month = dateToOrder.value['_i'].month;
+    let year = dateToOrder.value['_i'].year;
+    let newDate = day + '-'  + month + '-' + year;
+    return newDate;
+  }
+
 }

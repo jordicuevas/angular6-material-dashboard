@@ -28,8 +28,9 @@ import { ProgrammingComponent } from './components/programming/programming.compo
 import { LeftbarService } from './services/leftbar.service';
 import { CalendarModule } from 'angular-calendar';
 import { FlatpickrModule } from 'angularx-flatpickr';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-@NgModule({
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+ @NgModule({
   declarations: [
     AppComponent,
     InputComponent,
@@ -61,7 +62,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CalendarModule.forRoot(),
     FlatpickrModule.forRoot(),
     NgbModule,
-    AuthModule
+    AuthModule,
+    NgxMaterialTimepickerModule.forRoot(),
 
    ],
   schemas: [

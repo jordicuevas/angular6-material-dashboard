@@ -13,6 +13,6 @@ export class ConfigService {
 
   constructor() {
     this.token = localStorage.getItem('Bearer');
-    this.apiaddr = 'http://10.0.1.199:8600';
+    this.apiaddr = 'http://192.168.0.111:8000';
   }
 }

@@ -6,8 +6,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , FormsModule, NgForm } from '@angular/forms';
-import { Platform } from '@angular/cdk/platform';
-
+import { ToastrService } from 'ngx-toastr';
 import {
   startOfDay,
   endOfDay,
@@ -129,36 +128,40 @@ export class ProgrammingComponent   implements OnInit {
   ];
 
   activeDayIsOpen: boolean = false;
-  constructor( private fb: FormBuilder   ) {
-      this.flagProgram = false;
+  constructor( private fb: FormBuilder ,  public toastr: ToastrService  ) {
+     this.flagProgram = false;
      this.scheduleForm = fb.group({
-       fechaFin: ['', Validators.required],
-       fechaIni: ['', Validators.required],
-       size: ['', Validators.required, Validators.pattern('^[0-9]')],
-       target: ['', Validators.required],
-       lunes: [''],
-       martes: [''],
-       miercoles: [''],
-       jueves: [''],
-       viernes: [],
-       sabado: [],
-       domingo: [],
-       context: [],
-       horHasta : [],
-       horDesde : [ ],
-       fechaExFin: [],
-       horExIni: [],
-       horExFin: [],
-       fechaExIni: []
+       date_to:   ['', Validators.required],
+       date_from:   ['08/08/2018', Validators.required],
+       size:       [10, Validators.required],
+       targets:     ['', Validators.required],
+       lunes:      [true],
+       martes:     [true],
+       miercoles:  [true],
+       jueves:     [true],
+       viernes:    [true],
+       sabado:     [true],
+       domingo:    [true],
+       location:    [''],
+       hour_end :  [''],
+       hour_start :  [''],
+       fechaExFin: [''],
+       horExIni:   [''],
+       horExFin:   [''],
+       fechaExIni: [''],
+       capacity:   ['', Validators.required],
+       config_default : [1, Validators.required],
+       account: [],
+       description: []
        // orangeFormEmail: ['', [Validators.required, Validators.email]],
      // orangeFormPass: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
   ngOnInit() {
-this.flagPlantilla = false; // inicializamos la plantilla en false
+     this.flagPlantilla = false; // inicializamos la plantilla en false
   }
-   showAlert() {
+  showAlert() {
 
   }
   submit(value) {
@@ -221,16 +224,39 @@ this.flagPlantilla = false; // inicializamos la plantilla en false
   /*
   * form logic
   * */
-  programmEvent(formValue) {
-    console.log(formValue);
+  programmEvent(formValue, isValid) {
+   // console.log(formValue.date_from);
+   if( isValid ) {
+      let fechaInicio = (this.reorderDate(formValue.date_from));
+      let fechaFin    = (this.reorderDate(formValue.date_to));
+      let days = [
+       {'0': formValue.domingo},
+       {'1': formValue.lunes},
+       {'2': formValue.martes},
+       {'3': formValue.miercoles},
+       {'4' : formValue.jueves},
+       {'5': formValue.viernes},
+       {'6': formValue.sabado}
+     ];
+     console.log( days );
+   } else {
+     this.toastr.error('complete los campos requeridos')
+   }
   }
   getTemplateValue(templateValue) {
     console.log(templateValue);
     switch (templateValue) {
-      case 0:
-        this.flagPlantilla = true;
-        break;
       case 1:
+        this.flagPlantilla = false;
+        break;
+      case 2:
+        this.flagPlantilla = true;
+
+        this.scheduleForm.controls['capacity'].setValue(25);
+        this.scheduleForm.controls['date_to'].setValue(new Date('11/10/1981'));
+
+        break;
+      default:
         this.flagPlantilla = false;
         break;
     }
@@ -241,28 +267,48 @@ this.flagPlantilla = false; // inicializamos la plantilla en false
   /*
   * Add labor hours to array
   * */
-  addLaborHour(fechaDesde, fechaHasta ) {
+  addLaborHour(horDesde, horHasta, fechaDesde, fechaHasta ) {
+    console.log(horDesde.value)
+    if ( horDesde.value === null || horHasta.value === null || fechaDesde.value === null || fechaHasta.value === null ) {
+      this.toastr.error('Los campos de la sección excepciones son obligatorios  ')
+       return false;
+    } else {
+      console.log(fechaDesde)
+      /// REORDENAMOS LAS FECHAS
+      let fechaD = this.reorderDate(fechaDesde);
+      let fechaH = this.reorderDate(fechaHasta);
+      /// CAPTURAMOS EL VALOR DE LOS CONTROLES HORA
+      let horaDesde = horDesde.value;
+      let horaHasta = horHasta.value;
+      /// CONVERTIMOS LOS VALORES EN ARRAY Y ASIGNAMOS AL ARRAY  HOURSOFLABOR A GUARDAR
+      let arrayElement =  this.makeArrayElement(fechaD, horaDesde, fechaH, horaHasta);
+      this.hoursOfLabor.push(arrayElement);
+      localStorage.setItem('arrayHoras', JSON.stringify(this.hoursOfLabor));
+    }
 
-console.log(fechaDesde);
-
-   /* let fechaD = this.reorderDate(fechaDesde);
-    console.log(fechaD)
-    let fechaH = this.reorderDate(fechaHasta);
-    console.log(fechaH)
-    let horaDesde = horDesde.value;
-    let horaHasta = horHasta.value;*/
-    let labourHour = fechaDesde +  ' - '  + fechaHasta
-    this.hoursOfLabor.push(labourHour);
 }
+makeArrayElement (fechaInicio , horaInicio, fechaFin, horaFin) {
+    let element = [fechaInicio + ' ' + horaInicio + ' , ' + fechaFin + ' ' + horaFin ];
+    return element;
+}
+/*
+* @FUNTION : deleteLabourHour
+* @PARAMS : ID: id of the element of the array
+* */
   deleteLabourHour(id) {
-    console.log(id);
-     this.hoursOfLabor.splice( id , 1);
+      this.hoursOfLabor.splice( id , 1);
   }
+  /*
+* @FUNTION : reorderDate
+* @PARAMS : dateToOrder: value of datepicker
+* */
   reorderDate( dateToOrder) {
-    let day   = dateToOrder.value['_i'].date;
-    let month = dateToOrder.value['_i'].month;
-    let year = dateToOrder.value['_i'].year;
-    let newDate = day + '-'  + month + '-' + year;
+        let day   = dateToOrder['_i'].date;
+        day = (day < 10) ? '0' + day : day;
+        let month = dateToOrder['_i'].month;
+        month = (month < 10 ) ? '0' + month : month;
+        let year = dateToOrder['_i'].year;
+        let newDate = day + '-'  + month + '-' + year;
     return newDate;
   }
 
